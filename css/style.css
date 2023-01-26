@@ -54,28 +54,129 @@ body{
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center; /* used for inline-block */
 }
 
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
+  backface-visibility: hidden; /* Avoids possible background shakiness with animations */
+  margin-bottom: 60px;
 }
 .heading-primary-main{
   display: block; /* Good here because take up whole width and create new line elements */
   font-size: 60px;
   letter-spacing: 20px;
+  animation: moveInLeft 1s ease-out;
 }
 .heading-primary-sub{
   display: block;
   font-size: 20px;
   letter-spacing: 5px;
   font-weight: lighter;
+  animation: moveInRight 1s ease-out;
 }
+
+.btn:link,
+.btn:visited {
+  /* Psuedo class - this link is a state of the btn class (also we don't want visited state to change which is why we put this here)*/
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block;  /* Do this if we want to give some height, padding, width, ect... to elements */
+  border-radius: 10px;
+  transition: all .2s;  /* choose which properties to animate !must be on initial state! */
+  position: relative; /* we do this for the fixed-psuedo-element */
+}
+.btn:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.2);  /* x offset, y offset, blur, color(black w/ 20% transparency) */
+}
+.btn:active{
+  transform: translateY(-1px);  /* this is in relation to initial (link) state, not hover state */
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+.btn-white {
+  background-color: #fff;
+  color: #777;
+}
+.btn::after {
+  /* after psuedo element, it's basically a child of parent element */
+  content: "";
+  display: inline-block; /* because button we have is also an inline block */
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  position: absolute; /*put behind button, initially goes by header since header is relative */
+  top: 0;
+  left: 0;
+  z-index: -1; /* defines elements if there are many on top of one another */
+  transition: all .4s; /* Animate only on initial state */
+}
+.btn-white::after{
+  background-color: #fff;
+}
+.btn:hover::after{
+  /* we want after elements to have properties when the button is on the hover state */
+  transform: scale(1.50); /* simply incrase the element */
+  opacity: 0;  /* trick to fade something out with transition property on initial state */
+}
+.btn-animated{
+  animation: moveInBottom 0.5s ease-out .75s backwards;  /* backwards - apply styles BEFORE animation starts */
+}
+
 /* End element editing */
+
+
+/* Start animations */
+@keyframes moveInLeft {
+  0% {
+    opacity: 0; /* For browser performance, use opacity and transform */
+    transform: translateX(-100px)
+  }
+
+  80% {
+    transform: translateX(10px); /* Move in a little farther to create a nice bouncing effect*/
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0; /* For browser performance, use opacity and transform */
+    transform: translateX(100px)
+  }
+
+  80% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px)
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* End animations */
 
 /*
 RESOURCES:
   https://hookagency.com/blog/website-color-schemes-2020/  (color schemes)
   https://bennettfeely.com/clippy/  (photo clippings)
   logo.com  (logo creator)
+  developer.mozilla.org/en-US/docs/Web/CSS/animation (animation syntax)
 */
