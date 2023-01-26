@@ -1,2 +1,2 @@
 # Pegasus
-## Professional pages for realtors and loan officers
+## Professional pages for realtors, loan officers, and title agencies

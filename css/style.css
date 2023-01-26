@@ -1,14 +1,81 @@
+/* COLORS:
+  Dark Grey: #393939 – Dark designs take a little bit more fore-thought but can provide tons of contrast if used well. 
+  Deep Orange: #FF5A09 – With different shades of oranges, there is depth and gradient, without venturing into totally new colors. 
+  Light Orange: #ec7f37 – Utilizing illustrative elements, requires a bit of flexibility for the natural lightness and darkness to contour objects. 
+  Orange Yellow: #be4f0c – Using on color over on the color wheel can keep the palette looking classy, bold, and restrained.
+*/
+
+
+/* Start project-wide definitions */
+*{
+  /* Allowing us to start clean*/
+  margin: 0;
+  padding: 0;
+
+  /* Added so that borders and paddings are not added to total width or height to box*/
+  box-sizing: border-box;
+}
+
+body{
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777; /* Font color */
+  padding: 20px;
+}
+/* End project-wide definitions */
+
+
+/* Start element editing */
+.header{
+  height: 95vh; /* At every point, this element should be at 95% of the viewport height */
+  background-image: linear-gradient(
+    to right bottom,
+    #393939c5, 
+    #ec7f37a3), 
+    url(../img/mainbackground.jpg);
+  background-size: cover; /* Whatever the width of the viewport, will try to fit element inside of box*/
+  background-position: top; /* As screen changes, top of photo is sticky (center works well too) */
+  position: relative; /* Origin */
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); /* Specify polygon in which element will still be visibile */
+}
+
+.logo-box{
+  position: absolute;
+  top: 40px; /* Measurement will start parent element header, so header needs to be relative*/
+  left: 40px;
+}
+.logo{
+  height: 100px; /* Size of logo */
+}
+
+.text-box{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+}
+.heading-primary-main{
+  display: block; /* Good here because take up whole width and create new line elements */
+  font-size: 60px;
+  letter-spacing: 20px;
+}
+.heading-primary-sub{
+  display: block;
+  font-size: 20px;
+  letter-spacing: 5px;
+  font-weight: lighter;
+}
+/* End element editing */
 
 /*
-
-COLORS:
-
-Are ya yellow?!: #feda6a
-Silver Fox: #d4d4dc
-Deep Matte Grey: #393f4d
-Dark Slate: #1d1e22
-
-Credit
-https://hookagency.com/blog/website-color-schemes-2020/
-https://dribbble.com/shots/2227454-Vintage-Rides-Concept/attachments/414174
+RESOURCES:
+  https://hookagency.com/blog/website-color-schemes-2020/  (color schemes)
+  https://bennettfeely.com/clippy/  (photo clippings)
+  logo.com  (logo creator)
 */
