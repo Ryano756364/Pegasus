@@ -7,21 +7,26 @@
 
 
 /* Start project-wide definitions */
-*{
+*,
+*::after,
+*::before{
   /* Allowing us to start clean*/
   margin: 0;
   padding: 0;
-
   /* Added so that borders and paddings are not added to total width or height to box*/
-  box-sizing: border-box;
+  box-sizing: inherit; /* Tells each element to inherit whatever border box property we set in the body element below (border-box)*/
+}
+
+html {
+  font-size: 62.5%; /* Strategy based on system default of 16px to adjust for rem later*/
 }
 
 body{
   font-family: "Nunito", sans-serif;
-  font-size: 16px;
   line-height: 1.7;
   color: #777; /* Font color */
-  padding: 20px;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 /* End project-wide definitions */
 
@@ -40,16 +45,16 @@ body{
   clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); /* Specify polygon in which element will still be visibile */
 }
 
-.logo-box{
+.header__logo-box{
   position: absolute;
-  top: 40px; /* Measurement will start parent element header, so header needs to be relative*/
-  left: 40px;
+  top: 3rem; /* Measurement will start parent element header, so header needs to be relative*/
+  left: 3rem;
 }
-.logo{
-  height: 100px; /* Size of logo */
+.header__logo{
+  height: 10rem; /* Size of logo */
 }
 
-.text-box{
+.header__text-box{
   position: absolute;
   top: 40%;
   left: 50%;
@@ -61,18 +66,18 @@ body{
   color: #fff;
   text-transform: uppercase;
   backface-visibility: hidden; /* Avoids possible background shakiness with animations */
-  margin-bottom: 60px;
+  margin-bottom: 6rem;
 }
-.heading-primary-main{
+.heading-primary--main{
   display: block; /* Good here because take up whole width and create new line elements */
-  font-size: 60px;
-  letter-spacing: 20px;
+  font-size: 6rem;
+  letter-spacing: 2rem;
   animation: moveInLeft 1s ease-out;
 }
-.heading-primary-sub{
+.heading-primary--sub{
   display: block;
-  font-size: 20px;
-  letter-spacing: 5px;
+  font-size: 2rem;
+  letter-spacing: .5rem;
   font-weight: lighter;
   animation: moveInRight 1s ease-out;
 }
@@ -82,21 +87,22 @@ body{
   /* Psuedo class - this link is a state of the btn class (also we don't want visited state to change which is why we put this here)*/
   text-transform: uppercase;
   text-decoration: none;
-  padding: 15px 40px;
+  padding: 1.5rem 4rem;
   display: inline-block;  /* Do this if we want to give some height, padding, width, ect... to elements */
-  border-radius: 10px;
+  border-radius: 1rem;
   transition: all .2s;  /* choose which properties to animate !must be on initial state! */
   position: relative; /* we do this for the fixed-psuedo-element */
+  font-size: 1.75rem;
 }
 .btn:hover{
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0,0,0,.2);  /* x offset, y offset, blur, color(black w/ 20% transparency) */
+  box-shadow: 0 1rem 2rem rgba(0,0,0,.2);  /* x offset, y offset, blur, color(black w/ 20% transparency) */
 }
 .btn:active{
   transform: translateY(-1px);  /* this is in relation to initial (link) state, not hover state */
-  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
 }
-.btn-white {
+.btn--white {
   background-color: #fff;
   color: #777;
 }
@@ -106,14 +112,14 @@ body{
   display: inline-block; /* because button we have is also an inline block */
   height: 100%;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 1rem;
   position: absolute; /*put behind button, initially goes by header since header is relative */
   top: 0;
   left: 0;
   z-index: -1; /* defines elements if there are many on top of one another */
   transition: all .4s; /* Animate only on initial state */
 }
-.btn-white::after{
+.btn--white::after{
   background-color: #fff;
 }
 .btn:hover::after{
@@ -121,10 +127,9 @@ body{
   transform: scale(1.50); /* simply incrase the element */
   opacity: 0;  /* trick to fade something out with transition property on initial state */
 }
-.btn-animated{
+.btn--animated{
   animation: moveInBottom 0.5s ease-out .75s backwards;  /* backwards - apply styles BEFORE animation starts */
 }
-
 /* End element editing */
 
 
@@ -132,11 +137,11 @@ body{
 @keyframes moveInLeft {
   0% {
     opacity: 0; /* For browser performance, use opacity and transform */
-    transform: translateX(-100px)
+    transform: translateX(-10rem)
   }
 
   80% {
-    transform: translateX(10px); /* Move in a little farther to create a nice bouncing effect*/
+    transform: translateX(1rem); /* Move in a little farther to create a nice bouncing effect*/
   }
 
   100% {
@@ -148,11 +153,11 @@ body{
 @keyframes moveInRight {
   0% {
     opacity: 0; /* For browser performance, use opacity and transform */
-    transform: translateX(100px)
+    transform: translateX(10rem)
   }
 
   80% {
-    transform: translateX(-10px);
+    transform: translateX(-1rem);
   }
 
   100% {
@@ -164,7 +169,7 @@ body{
 @keyframes moveInBottom {
   0% {
     opacity: 0;
-    transform: translateY(30px)
+    transform: translateY(3rem)
   }
   100% {
     opacity: 1;
@@ -179,4 +184,6 @@ RESOURCES:
   https://bennettfeely.com/clippy/  (photo clippings)
   logo.com  (logo creator)
   developer.mozilla.org/en-US/docs/Web/CSS/animation (animation syntax)
+  codepen.io  (to experiment with styles and strategies)
+  https://codepen.io/RyanO2668/pen/ExpRYQX?editors=1100 (SCSS testing)
 */

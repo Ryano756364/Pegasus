@@ -14,17 +14,17 @@
 
     <body>
         <header class="header">
-            <div class="logo-box">
-                <img src="./img/pegasus-website-favicon-white.png" class= "logo" alt="pegasus-company-logo-create-website-realtor-loanadvisor-titleagency-loan-advisor-title-company">
+            <div class="header__logo-box"> <!-- Header is block, logo-box is element -->
+                <img src="./img/pegasus-website-favicon-white.png" class= "header__logo" alt="pegasus-company-logo-create-website-realtor-loanadvisor-titleagency-loan-advisor-title-company"> <!-- we do header__ here because logo only exists in the header-->
             </div>
 
-            <div class="text-box">
+            <div class="header__text-box"> <!-- this text box is apart of header and doesn't make sense to use anywhere else -->
                 <h1 class="heading-primary"> <!-- H1 is important for Google and other webpages -->
-                    <span class="heading-primary-main">Pegasus</span>
-                    <span class="heading-primary-sub">Websites curated for realtors, loan advisors, and title agencies</span>
+                    <span class="heading-primary--main">Pegasus</span> <!-- block then -- (name of modifier)-->
+                    <span class="heading-primary--sub">Websites curated for realtors, loan advisors, and title agencies</span>
                 </h1>
 
-                <a href="#" class="btn btn-white btn-animated">How To Get Your Site</a>
+                <a href="#" class="btn btn--white btn--animated">How To Get Your Site</a> <!-- --white and --animated are creating different versions of btn so we use '--' -->
             </div>
         </header>
     </body>
