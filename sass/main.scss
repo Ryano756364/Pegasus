@@ -1,0 +1,198 @@
+/* COLORS:
+  Dark Grey: #393939 – Dark designs take a little bit more fore-thought but can provide tons of contrast if used well. 
+  Deep Orange: #FF5A09 – With different shades of oranges, there is depth and gradient, without venturing into totally new colors. 
+  Light Orange: #ec7f37 – Utilizing illustrative elements, requires a bit of flexibility for the natural lightness and darkness to contour objects. 
+  Orange Yellow: #be4f0c – Using on color over on the color wheel can keep the palette looking classy, bold, and restrained.
+*/
+
+
+/* Start project-wide definitions */
+
+$color-primary: #393939;
+$color-primary-light: #ec7f37;
+$color-primary-dark: #FF5A09;
+$color-primary-yellow: #be4f0c;
+$color-grey-dark: #777;
+$color-white: #fff;
+
+
+*,
+*::after,
+*::before{
+  /* Allowing us to start clean*/
+  margin: 0;
+  padding: 0;
+  /* Added so that borders and paddings are not added to total width or height to box*/
+  box-sizing: inherit; /* Tells each element to inherit whatever border box property we set in the body element below (border-box)*/
+}
+
+html {
+  font-size: 62.5%; /* Strategy based on system default of 16px to adjust for rem later*/
+}
+
+body{
+  font-family: "Nunito", sans-serif;
+  line-height: 1.7;
+  color: $color-grey-dark; /* Font color */
+  padding: 2rem;
+  box-sizing: border-box;
+}
+/* End project-wide definitions */
+
+
+/* Start element editing */
+.header{
+  height: 95vh; /* At every point, this element should be at 95% of the viewport height */
+  background-image: linear-gradient(
+    to right bottom,
+    rgba($color-primary, 0.8),
+    rgba($color-primary-light, 0.8)),
+    url(../img/mainbackground.jpg);
+  background-size: cover; /* Whatever the width of the viewport, will try to fit element inside of box*/
+  background-position: top; /* As screen changes, top of photo is sticky (center works well too) */
+  position: relative; /* Origin */
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); /* Specify polygon in which element will still be visibile */
+}
+
+.header__logo-box{
+  position: absolute;
+  top: 3rem; /* Measurement will start parent element header, so header needs to be relative*/
+  left: 3rem;
+}
+.header__logo{
+  height: 10rem; /* Size of logo */
+}
+
+.header__text-box{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center; /* used for inline-block */
+}
+
+.heading-primary {
+  color: $color-white;
+  text-transform: uppercase;
+  backface-visibility: hidden; /* Avoids possible background shakiness with animations */
+  margin-bottom: 6rem;
+}
+.heading-primary--main{
+  display: block; /* Good here because take up whole width and create new line elements */
+  font-size: 6rem;
+  letter-spacing: 2rem;
+  animation: moveInLeft 1s ease-out;
+}
+.heading-primary--sub{
+  display: block;
+  font-size: 2rem;
+  letter-spacing: .5rem;
+  font-weight: lighter;
+  animation: moveInRight 1s ease-out;
+}
+
+.btn:link,
+.btn:visited {
+  /* Psuedo class - this link is a state of the btn class (also we don't want visited state to change which is why we put this here)*/
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;  /* Do this if we want to give some height, padding, width, ect... to elements */
+  border-radius: 1rem;
+  transition: all .2s;  /* choose which properties to animate !must be on initial state! */
+  position: relative; /* we do this for the fixed-psuedo-element */
+  font-size: 1.75rem;
+}
+.btn:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(0,0,0,.2);  /* x offset, y offset, blur, color(black w/ 20% transparency) */
+}
+.btn:active{
+  transform: translateY(-1px);  /* this is in relation to initial (link) state, not hover state */
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
+}
+.btn--white {
+  background-color: $color-white;
+  color: $color-grey-dark;
+}
+.btn::after {
+  /* after psuedo element, it's basically a child of parent element */
+  content: "";
+  display: inline-block; /* because button we have is also an inline block */
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  position: absolute; /*put behind button, initially goes by header since header is relative */
+  top: 0;
+  left: 0;
+  z-index: -1; /* defines elements if there are many on top of one another */
+  transition: all .4s; /* Animate only on initial state */
+}
+.btn--white::after{
+  background-color: $color-white;
+}
+.btn:hover::after{
+  /* we want after elements to have properties when the button is on the hover state */
+  transform: scale(1.50); /* simply incrase the element */
+  opacity: 0;  /* trick to fade something out with transition property on initial state */
+}
+.btn--animated{
+  animation: moveInBottom 0.5s ease-out .75s backwards;  /* backwards - apply styles BEFORE animation starts */
+}
+/* End element editing */
+
+
+/* Start animations */
+@keyframes moveInLeft {
+  0% {
+    opacity: 0; /* For browser performance, use opacity and transform */
+    transform: translateX(-10rem)
+  }
+
+  80% {
+    transform: translateX(1rem); /* Move in a little farther to create a nice bouncing effect*/
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0; /* For browser performance, use opacity and transform */
+    transform: translateX(10rem)
+  }
+
+  80% {
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem)
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* End animations */
+
+/*
+RESOURCES:
+  https://hookagency.com/blog/website-color-schemes-2020/  (color schemes)
+  https://bennettfeely.com/clippy/  (photo clippings)
+  logo.com  (logo creator)
+  developer.mozilla.org/en-US/docs/Web/CSS/animation (animation syntax)
+  codepen.io  (to experiment with styles and strategies)
+  https://codepen.io/RyanO2668/pen/ExpRYQX?editors=1100 (SCSS testing)
+*/
