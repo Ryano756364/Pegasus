@@ -1,0 +1,42 @@
+@keyframes moveInLeft {
+  0% {
+    opacity: 0; /* For browser performance, use opacity and transform */
+    transform: translateX(-10rem);
+  }
+
+  80% {
+    transform: translateX(1rem); /* Move in a little farther to create a nice bouncing effect*/
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0; /* For browser performance, use opacity and transform */
+    transform: translateX(10rem);
+  }
+
+  80% {
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,57 @@
+.btn {
+  &:link,
+  &:visited {
+  /* Psuedo class - this link is a state of the btn class (also we don't want visited state to change which is why we put this here)*/
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;  /* Do this if we want to give some height, padding, width, ect... to elements */
+  border-radius: 1rem;
+  transition: all .2s;  /* choose which properties to animate !must be on initial state! */
+  position: relative; /* we do this for the fixed-psuedo-element */
+  font-size: 1.75rem;
+  }
+
+  &:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba($color-black,.2);  /* x offset, y offset, blur, color(black w/ 20% transparency) */
+  
+    &::after{
+      /* we want after elements to have properties when the button is on the hover state */
+      transform: scale(1.50); /* simply incrase the element */
+      opacity: 0;  /* trick to fade something out with transition property on initial state */
+    }
+  }
+
+  &:active{
+    transform: translateY(-1px);  /* this is in relation to initial (link) state, not hover state */
+    box-shadow: 0 .5rem 1rem rgba($color-black,.2);
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &::after{
+      background-color: $color-white;
+    }
+  }
+
+  &::after {
+    /* after psuedo element, it's basically a child of parent element */
+    content: "";
+    display: inline-block; /* because button we have is also an inline block */
+    height: 100%;
+    width: 100%;
+    border-radius: 1rem;
+    position: absolute; /*put behind button, initially goes by header since header is relative */
+    top: 0;
+    left: 0;
+    z-index: -1; /* defines elements if there are many on top of one another */
+    transition: all .4s; /* Animate only on initial state */
+  }
+  
+  &--animated{
+    animation: moveInBottom 0.5s ease-out .75s backwards;  /* backwards - apply styles BEFORE animation starts */
+  }
+}

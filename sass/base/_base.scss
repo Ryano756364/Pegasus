@@ -1,0 +1,17 @@
+*,
+*::after,
+*::before{
+  /* Allowing us to start clean*/
+  margin: 0;
+  padding: 0;
+  /* Added so that borders and paddings are not added to total width or height to box*/
+  box-sizing: inherit; /* Tells each element to inherit whatever border box property we set in the body element below (border-box)*/
+}
+
+html {
+  font-size: 62.5%; /* Strategy based on system default of 16px to adjust for rem later - global ~ not typography */
+}
+
+body{
+  box-sizing: border-box;
+}
