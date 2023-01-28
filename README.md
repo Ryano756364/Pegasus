@@ -16,7 +16,7 @@
 #### https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance (nesting)
 #### https://css-tricks.com/snippets/html/glyphs/ (arrows and other symbols)
 #### https://themeui.net/linea-free-outline-iconset/ (icons)
-#### 
+#### https://www.youtube.com/watch?v=QGVXmoZWZuw (flipping card)
 #### 
 #### 
 #### 

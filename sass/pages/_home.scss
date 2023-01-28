@@ -19,5 +19,10 @@
     & > * {  /* selects everything that is a direct child of ALL of .section-features */
       transform: skewY(7deg);  /* adjusts boxes back to horizontal due to section tild of -7 degrees */
     }
+}
 
+.section-pricing {
+  background-color: $color-grey-light-1;
+  padding: 25rem 0 15rem 0;
+  margin-top: -12rem;  /* helps remove break between sections and awkward white space */
 }

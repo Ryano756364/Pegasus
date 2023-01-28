@@ -37,6 +37,15 @@
     }
   }
 
+  &--orange {
+    background-color: $color-primary-dark;
+    color: $color-white;
+
+    &::after{
+      background-color: $color-primary-dark;
+    }
+  }
+
   &::after {
     /* after psuedo element, it's basically a child of parent element */
     content: "";
