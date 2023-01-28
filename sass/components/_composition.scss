@@ -1,0 +1,43 @@
+.composition {
+  position: relative; 
+
+  &__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .4); /* X Y Blue Color, X is almost always 0 for this */
+    border-radius: 2px;
+    position: absolute;  /* as soon as this happens, will go to first parent with reference positioning, which we want to be composition (most immediate parent element) */
+    z-index: 10; /* sets us up for hover effect */
+    transition: all .2s;  /* ties in with hover and z-index */
+    /*setup for outline border around photo*/
+    outline-offset: 2rem;
+
+    &--p1 {
+      left: 0;
+      top: -2rem;  /* moves image a bit above top text on left grid */
+    }
+
+    &--p2 {
+      right: 0;
+      top: 2rem;  /* moves image a bit above top text on left grid */
+    }
+
+    &--p3 {
+      left: 20%;
+      top: 10rem;  /* moves image a bit above top text on left grid */
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 2.5rem 4rem rgba($color-black, .5);  /* bigger shadow + darker to simulate getting closer to the screen */
+      z-index: 20;  /* due to parent having z-index of 10, will have higher precedence when hover is activated */
+      transform: scale(1.05) translateY(-.5rem);  /* subtle edge to animation to make it look a bit cooler */
+
+      /*setup for outline border around photo*/
+      outline: 1.5rem solid $color-primary-dark;
+    } 
+  }
+
+  &:hover &__photo:not(:hover) { /* when we hover composition, then select composition photo that is NOT hovered */
+    transform: scale(.9);  /* shrinks the rest of the photos that are not hovered */
+  }
+}

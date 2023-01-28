@@ -10,12 +10,10 @@
 
   [class^="col-"] {
     float: left;
-    background-color: orangered;
 
     &:not(:last-child) {
         margin-right: $gutter-horizontal;   
     }
-    
   }
 
   .col-1-of-2 {
