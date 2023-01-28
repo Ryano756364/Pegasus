@@ -1,0 +1,57 @@
+.form {
+
+  &__group:not(:last-child){
+    margin-bottom: 2rem;
+  }
+
+  &__input {
+    /* basic setup */
+    font-size: 1.5rem;
+    font-family: inherit;  // automatically inherits font family (input element is not normally automatic so need this here)
+    color: inherit;
+    padding: 1.5rem 2rem;  // usally want to go for more padding on the sides with input
+    border-radius: 2px;
+    background-color: rgba($color-white, .5);
+    border: none;
+    border-bottom: 3px solid transparent;
+    width: 90%;
+    display: block;  // forces its own line and pushes text below it
+
+    &:focus {
+      outline: none;  //removes default blue border, but don't leave it at none due to functionality for those who need to know what box is highlighted
+      box-shadow: 0 1rem 2rem rgba($color-black, .1);
+      
+      // border becomes visibile upon being after
+      border-bottom: 3px solid $color-primary-light;
+    }
+
+    &:focus:invalid {
+      // when we have INVALID, FOCUSED, INPUT element, this will activate
+      border-bottom: 3px solid $color-secondary-medium;
+    }
+
+    &::-webkit-input-placeholder {
+      //psuedo elements are things that are on webpage already
+      color: $color-grey-dark-2;
+    }
+  }
+  
+  &__label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: .7rem;
+    display: block;  // need this otherwise box-model properties won't work
+
+    transition: all .3s;
+  }
+
+  &__input:placeholder-shown + &__label {
+    // '+' is a sibling selector (there is also a '~' general sibling selector if there are more siblings than 1
+    // 'label' must be after 'input' in order to use sibling selector...which it is
+    // when placeholder is shown on input element, we can now style, but we want label to be hidden...not the input
+    opacity: 0;  
+    visibility: hidden;
+    transform: translateY(-4rem);  // moves text down 40 px
+  }
+}

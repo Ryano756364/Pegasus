@@ -9,7 +9,7 @@
     transition: all .5s ease;
     border-radius: 3px;
     box-shadow: 0 1.5rem 40px rgba($color-black, .15);  /* could be variable */
-
+    
     /* setup to place back card behind front card */
     position: absolute; /* remember to always give parent a relative position -> will fit to width by default (text size) */
     top: 0;

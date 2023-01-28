@@ -1,0 +1,21 @@
+// component crated incase we want to utilize background videos in other parts of the website
+
+.background-video {
+  position: absolute;  //refer to section-reviews as parent
+  top: 0;
+  left: 0;
+  height: 100%;  // height and width go off of parent container 
+  width: 100%;
+  z-index: -1;  // push behind top elements
+  opacity: .35;  // lighten the video
+
+  /* handles potential overflow bugs */
+  overflow: hidden;
+
+  /* handle overflow and large size of video */
+  &__content {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;  // handles aspect ratio issues when screen size is changed, other values other than cover exist
+  }
+}
