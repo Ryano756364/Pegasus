@@ -90,7 +90,7 @@ body {
   font-weight: 700;
   letter-spacing: 2px;
   /* Cascading effect on the text colors */
-  background-image: linear-gradient(to right, #ec7f37, #FF5A09);
+  background-image: linear-gradient(to right, #ec7f37, #ff5b09bc);
   display: inline-block;
   -webkit-background-clip: text;
   color: transparent;
@@ -122,6 +122,12 @@ body {
 
 .u-margin-bottom-small {
   margin-bottom: 1.5rem; }
+
+.u-margin-top-big {
+  margin-top: 7rem; }
+
+.u-margin-top-giant {
+  margin-top: 10rem; }
 
 .btn:link, .btn:visited {
   /* Psuedo class - this link is a state of the btn class (also we don't want visited state to change which is why we put this here)*/
@@ -159,6 +165,12 @@ body {
   .btn--white::after {
     background-color: #fff; }
 
+.btn--orange {
+  background-color: #ff5b09bc;
+  color: #fff; }
+  .btn--orange::after {
+    background-color: #ff5b09bc; }
+
 .btn::after {
   /* after psuedo element, it's basically a child of parent element */
   content: "";
@@ -185,14 +197,14 @@ body {
   display: inline-block;
   /* do this so we can apply properties like padding, margin, ect... */
   text-decoration: none;
-  border-bottom: 1px solid #FF5A09;
+  border-bottom: 1px solid #ff5b09bc;
   padding: 3px;
   /* okay to use finite units here because they are so small */
   font-size: 1.6rem;
   transition: all .2s; }
 
 .btn-text:hover {
-  background-color: #FF5A09;
+  background-color: #ff5b09bc;
   color: #fff;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
   /* X Y Blur Color */
@@ -241,7 +253,7 @@ body {
       transform: scale(1.05) translateY(-0.5rem);
       /* subtle edge to animation to make it look a bit cooler */
       /*setup for outline border around photo*/
-      outline: 1.5rem solid #FF5A09; }
+      outline: 1.5rem solid #ff5b09bc; }
   .composition:hover .composition__photo:not(:hover) {
     /* when we hover composition, then select composition photo that is NOT hovered */
     transform: scale(0.9);
@@ -255,16 +267,140 @@ body {
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
   /* shadowing is a big modern design trend */
+  height: 33rem;
   transition: transform .2s; }
   .feature-box__icon {
     font-size: 6rem;
     margin-bottom: .5rem;
     display: inline-block;
-    background-image: linear-gradient(to right, #ec7f37, #FF5A09);
+    background-image: linear-gradient(to right, #ec7f37, #ff5b09bc);
     -webkit-background-clip: text;
     color: transparent; }
   .feature-box:hover {
     transform: translateY(-1.5rem) scale(1.03); }
+
+.card {
+  perspective: 150rem;
+  /* property related to hover and giving depth perspective, needs child element (.card__side) */
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 52rem;
+  /* fixes bug where height of &__side collapses with animation */
+  /* rotation of card along y axis */
+  /* font of card */
+  /* Back of card */ }
+  .card__side {
+    height: 52rem;
+    transition: all .5s ease;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 40px rgba(0, 0, 0, 0.15);
+    /* could be variable */
+    /* setup to place back card behind front card */
+    position: absolute;
+    /* remember to always give parent a relative position -> will fit to width by default (text size) */
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    /* hidden will hide backpart of element -> fixes weird bug */
+    /* allows rounded corners to come through image */
+    overflow: hidden; }
+    .card__side--front {
+      background-color: #fff; }
+    .card__side--back {
+      transform: rotateY(180deg);
+      /* sets up back side to already be at 180 degrees */ }
+      .card__side--back-1 {
+        background-image: linear-gradient(to right bottom, #67bde8, #006699); }
+      .card__side--back-2 {
+        background-image: linear-gradient(to right bottom, #13fa49aa, #04691b); }
+      .card__side--back-3 {
+        background-image: linear-gradient(to right bottom, #ec7f37, #ff5b09bc); }
+  .card:hover .card__side--front {
+    /* when we hover over card, we also want side to transform as well */
+    transform: rotateY(-180deg); }
+  .card:hover .card__side--back {
+    transform: rotateY(0);
+    /* since it alreads starts out at 180 degrees -> goes back to 0 */ }
+  .card__picture {
+    /* all image setup */
+    background-size: cover;
+    height: 23rem;
+    background-blend-mode: screen;
+    /* blends color + photo (explore different blend modes) */
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    /* browser compatability goes first */
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    /* cuts photo to style */
+    border-top-left-radius: 3px;
+    /* manual needed here due to polygon making edges sharp */
+    border-top-right-radius: 3px; }
+    .card__picture--1 {
+      background-image: linear-gradient(to right bottom, #67bde8, #006699), url(/img/money-1.jpg); }
+    .card__picture--2 {
+      background-image: linear-gradient(to right bottom, #13fa49aa, #04691b), url(/img/money-2.jpg); }
+    .card__picture--3 {
+      background-image: linear-gradient(to right bottom, #ec7f37, #ff5b09bc), url(/img/money-3.jpg); }
+  .card__heading {
+    /* initial heading setup */
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #fff;
+    /* move text onto image */
+    position: absolute;
+    top: 10rem;
+    right: 2rem;
+    text-align: right;
+    /* compress width to go from full length of element to stack text */
+    width: 80%; }
+  .card__heading-span {
+    padding: 1rem 1.5rem;
+    /* Create stacked text as if they are two separate elements */
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone; }
+    .card__heading-span--1 {
+      background-image: linear-gradient(to right bottom, rgba(103, 189, 232, 0.85), rgba(0, 102, 153, 0.85)); }
+    .card__heading-span--2 {
+      background-image: linear-gradient(to right bottom, rgba(19, 250, 73, 0.85), rgba(4, 105, 27, 0.85)); }
+    .card__heading-span--3 {
+      background-image: linear-gradient(to right bottom, rgba(236, 127, 55, 0.85), rgba(255, 91, 9, 0.85)); }
+  .card__details {
+    padding: 3rem; }
+    .card__details ul {
+      /* Basic setup */
+      list-style: none;
+      width: 80%;
+      margin: 0 auto;
+      /* use this when centering a block inside of a block element */ }
+      .card__details ul li {
+        /* Basic setup */
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem; }
+        .card__details ul li:not(:last-child) {
+          /* border on bottom of every list item except last one */
+          border-bottom: 1px solid #eee; }
+  .card__container {
+    /*center*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*width of elm not parent*/
+    width: 90%;
+    /* override parent width */
+    text-align: center; }
+  .card__price-box {
+    text-align: center;
+    margin-bottom: 8rem;
+    color: #fff; }
+  .card__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase; }
+  .card__price-value {
+    font-size: 6rem;
+    font-weight: lighter; }
 
 .row {
   max-width: 114rem;
@@ -306,6 +442,7 @@ body {
   /* As screen changes, top of photo is sticky (center works well too) */
   position: relative;
   /* Origin */
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
   /* Specify polygon in which element will still be visibile */ }
   .header__logo-box {
@@ -344,3 +481,9 @@ body {
     /* selects everything that is a direct child of ALL of .section-features */
     transform: skewY(7deg);
     /* adjusts boxes back to horizontal due to section tild of -7 degrees */ }
+
+.section-pricing {
+  background-color: #f7f7f7;
+  padding: 25rem 0 15rem 0;
+  margin-top: -12rem;
+  /* helps remove break between sections and awkward white space */ }

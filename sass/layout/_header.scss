@@ -8,6 +8,8 @@
   background-size: cover; /* Whatever the width of the viewport, will try to fit element inside of box*/
   background-position: top; /* As screen changes, top of photo is sticky (center works well too) */
   position: relative; /* Origin */
+ 
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%); /* Specify polygon in which element will still be visibile */
   
   &__logo-box { /* '&' same as '.header' */

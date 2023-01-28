@@ -1,0 +1,168 @@
+.card {
+  perspective: 150rem;  /* property related to hover and giving depth perspective, needs child element (.card__side) */
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 52rem;  /* fixes bug where height of &__side collapses with animation */
+
+  &__side{
+    height: 52rem;
+    transition: all .5s ease;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 40px rgba($color-black, .15);  /* could be variable */
+
+    /* setup to place back card behind front card */
+    position: absolute; /* remember to always give parent a relative position -> will fit to width by default (text size) */
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden; /* hidden will hide backpart of element -> fixes weird bug */
+
+    /* allows rounded corners to come through image */
+    overflow: hidden;
+    &--front {
+      background-color: $color-white;
+    }
+    &--back {
+      transform: rotateY(180deg); /* sets up back side to already be at 180 degrees */
+
+      &-1 {
+        background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+      }
+      &-2 {
+        background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+      }
+      &-3 {
+        background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+      }
+    }
+  }
+
+  /* rotation of card along y axis */
+  &:hover &__side--front {  /* when we hover over card, we also want side to transform as well */
+    transform: rotateY(-180deg);
+  }
+  &:hover &__side--back {  
+    transform: rotateY(0); /* since it alreads starts out at 180 degrees -> goes back to 0 */
+  }
+
+  /* font of card */
+  &__picture {
+    /* all image setup */
+    background-size: cover;
+    height: 23rem;
+
+    background-blend-mode: screen; /* blends color + photo (explore different blend modes) */
+
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); /* browser compatability goes first */
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); /* cuts photo to style */
+    
+    border-top-left-radius: 3px; /* manual needed here due to polygon making edges sharp */
+    border-top-right-radius: 3px;
+
+    &--1 {
+      background-image: 
+      linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark),
+      url(/img/money-1.jpg);
+    }
+    &--2 {
+      background-image: 
+      linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark),
+      url(/img/money-2.jpg);
+    }
+    &--3 {
+      background-image: 
+      linear-gradient(to right bottom, $color-primary-light, $color-primary-dark),
+      url(/img/money-3.jpg);
+    }
+  }
+
+    &__heading {
+      /* initial heading setup */
+      font-size: 2.8rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      color: $color-white;
+
+      /* move text onto image */
+      position: absolute;
+      top: 10rem;
+      right: 2rem;
+      text-align: right;
+
+      /* compress width to go from full length of element to stack text */
+      width: 80%
+    }
+
+    &__heading-span {
+      padding: 1rem 1.5rem;
+
+      /* Create stacked text as if they are two separate elements */
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+
+      &--1 {
+        background-image: linear-gradient(to right bottom, 
+        rgba($color-secondary-light, .85), 
+        rgba($color-secondary-dark, .85));
+      }
+      &--2 {
+        background-image: linear-gradient(to right bottom, 
+        rgba($color-tertiary-light, .85), 
+        rgba($color-tertiary-dark, .85));
+      }
+      &--3 {
+        background-image: linear-gradient(to right bottom, 
+        rgba($color-primary-light, .85), 
+        rgba($color-primary-dark, .85));
+      }
+    }
+
+    &__details {
+      padding: 3rem;
+
+      ul {
+        /* Basic setup */
+        list-style: none;
+        width: 80%;
+        margin: 0 auto;  /* use this when centering a block inside of a block element */
+
+        li {
+          /* Basic setup */
+          text-align: center;
+          font-size: 1.5rem;
+          padding: 1rem;
+
+          &:not(:last-child){ /* border on bottom of every list item except last one */
+            border-bottom: 1px solid $color-grey-light-2;
+          }
+        }
+      }
+    }
+
+  /* Back of card */
+  &__container {
+    /*center*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /*width of elm not parent*/
+    width: 90%; /* override parent width */
+    text-align: center;
+  }
+
+  &__price-box {
+    text-align: center;
+    margin-bottom: 8rem;
+    color: $color-white;
+  }
+
+  &__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+
+  &__price-value {
+    font-size: 6rem;
+    font-weight: lighter;
+  }
+}
