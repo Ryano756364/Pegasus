@@ -247,6 +247,25 @@ body {
     transform: scale(0.9);
     /* shrinks the rest of the photos that are not hovered */ }
 
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  /* shadowing is a big modern design trend */
+  transition: transform .2s; }
+  .feature-box__icon {
+    font-size: 6rem;
+    margin-bottom: .5rem;
+    display: inline-block;
+    background-image: linear-gradient(to right, #ec7f37, #FF5A09);
+    -webkit-background-clip: text;
+    color: transparent; }
+  .feature-box:hover {
+    transform: translateY(-1.5rem) scale(1.03); }
+
 .row {
   max-width: 114rem;
   /* Standard nowadays to use 1140px ~ ! max is important ! */
@@ -315,4 +334,13 @@ body {
 .section-features {
   padding: 20rem 0;
   /* make sure to have sites have plenty of padding */
-  background-image: linear-gradient(to right bottom, rgba(57, 57, 57, 0.8), rgba(236, 127, 55, 0.8)), url(); }
+  background-image: linear-gradient(to right bottom, rgba(57, 57, 57, 0.8), rgba(236, 127, 55, 0.8)), url(/img/handshake-1.jpg);
+  background-size: cover;
+  /* stretches background image nicely across element */
+  margin-top: -12rem;
+  transform: skewY(-7deg);
+  /* creates background diagonal tilt */ }
+  .section-features > * {
+    /* selects everything that is a direct child of ALL of .section-features */
+    transform: skewY(7deg);
+    /* adjusts boxes back to horizontal due to section tild of -7 degrees */ }

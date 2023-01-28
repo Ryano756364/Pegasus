@@ -10,5 +10,14 @@
     to right bottom,
     rgba($color-primary, 0.8),
     rgba($color-primary-light, 0.8)),
-    url()
+    url(/img/handshake-1.jpg);
+    background-size: cover;  /* stretches background image nicely across element */
+    margin-top: -12rem;
+
+    transform: skewY(-7deg); /* creates background diagonal tilt */
+    
+    & > * {  /* selects everything that is a direct child of ALL of .section-features */
+      transform: skewY(7deg);  /* adjusts boxes back to horizontal due to section tild of -7 degrees */
+    }
+
 }
