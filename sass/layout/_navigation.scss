@@ -1,0 +1,160 @@
+.navigation {
+  &__checkbox {
+    display: none;
+  }
+
+  &__button {
+    // 5 
+    background-color: $color-white;
+    height: 7rem;
+    width: 7rem;
+    position: fixed;
+    top: 6rem;  
+    right: 6rem;
+    border-radius: 50%;
+    z-index: 2000;
+
+    //hamburger
+    text-align: center;
+    cursor: pointer;
+  }
+
+  &__background {
+    // 1 - need to start with clicked circle on top of smaller circle
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+
+    // 2 - position all elements onto top right corner
+    position: fixed;  //not absolute as fixed doesn't change position as we scroll page
+    top: 6.5rem;
+    right: 6.5rem;
+
+    // 3 - add new color feature
+    background-image: radial-gradient($color-primary-light, $color-primary-dark-no-transparency);  //starts in middle of element and goes in all outside directions
+
+    // 4 - bring to front
+    z-index: 1000;
+
+    // 8
+    //transform: scale(80);  // creates circle animation effect when button is clicked
+    box-shadow: 0 1rem 3rem rgba($color: #000000, $alpha: .2);
+
+    // 17
+    transition: transform .6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  &__nav {
+    // 6
+    height: 100vh;
+    position: fixed;
+    top: 0;  // so it starts in top right corner of VP and then expands because of the two 100's above
+    right: 0;
+    z-index: 1500;  // needs to be in middle of background and button
+  
+    // 15
+    opacity: 0;
+    width: 0;
+
+    // 17
+    transition: all .8s cubic-bezier(0.16, 1, 0.3, 1);  // issue with nav-list width so need to adjust that next
+  }
+  &__list {
+    // 7 this is what gets centered inside nav container
+    position: absolute;
+    top: 50%;  //these next three could be a mixin 'center horizontal vertical'
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+
+    // 18
+    width: 100%;
+  }
+  &__item {
+    //10
+    margin: 1rem;
+
+  }
+  &__link {
+    &:link,
+    &:visited {
+      // 9
+      display: inline-block;  // so padding is applied + transform on #14
+      font-size: 3rem;
+      font-weight: 300;
+      padding: 1rem 2rem;  //always try to give a bit more padding on sides
+      color: $color-white;
+      text-decoration: none;
+      text-transform: uppercase;
+      
+      // 11 - start hover effect over text
+      background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+      
+      // 12 
+      background-size: 220%;
+      transition: all .4s;
+
+    }
+
+    &:hover,
+    &:active {
+      // 13 - need to shift background to left side completely
+      background-position: 100%;
+
+      // 14
+      color: $color-primary;
+      transform: translateX(1rem); 
+    }
+  }
+
+  // 16 - button click activates cover of color to child element
+  &__checkbox:checked ~ &__background {
+    transform: scale(80);
+  }
+  &__checkbox:checked ~ &__nav {
+    opacity: 1;
+    width: 100%;
+  }
+  
+  // 19 BEGIN HAMBURGER
+  &__icon {
+    position: relative;
+    margin-top: 3.4rem; //move down into circle
+    margin-right: .2rem;
+
+    &,  //remember -> this is the icon itself
+    &::before,
+    &::after {
+      width: 3rem;
+      height: 2px;
+      background-color: $color-grey-dark-3;
+      display: inline-block;
+    }
+
+    &::before,
+    &::after {
+      content: ""; //need this in order to display them
+      position: absolute; //remember-> parent is just icon
+      left: 0;
+
+      // 20 expanding lines
+      transition: all .2s;
+    }
+    &::before {
+      top: -.8rem;  //these two properties space to create sandwhich look
+    }
+    &::after {
+      top: .8rem;
+    }
+  }
+
+  // 20 hamburger hover effect with expanding lines
+  &__button:hover &__icon:before {
+    //we want pseudo element before + we can do this because icon is child element of button
+    top: -1rem;
+  }
+  &__button:hover &__icon:after {
+    top: 1rem;
+  }
+}

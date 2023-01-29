@@ -24,5 +24,13 @@
 #### developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_combinator (sibling selectors - see form input)
 #### https://www.youtube.com/watch?v=7oleJ4NfOVM (radio button trick)
 #### https://unsplash.com/t/business-work (many business photos used for this site)
-#### 
+#### https://www.youtube.com/watch?v=DZg6UfS5zYg (ham menu, also using radio button trick)
+#### https://easings.net/ (bezier numbers)
+#### cubic-bezier.com (bezier numbers)
+#### https://www.youtube.com/watch?v=OkJYtw1mPeU (css popup box)
+####
+####
+####
+####
+####
 ---
