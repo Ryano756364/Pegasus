@@ -112,25 +112,25 @@ body {
     margin-bottom: 2.5rem; }
 
 .u-center-text {
-  text-align: center; }
+  text-align: center !important; }
 
 .u-margin-bottom-big {
-  margin-bottom: 7rem; }
+  margin-bottom: 7rem !important; }
 
 .u-margin-bottom-medium {
-  margin-bottom: 3.5rem; }
+  margin-bottom: 3.5rem !important; }
 
 .u-margin-bottom-small {
-  margin-bottom: 1.5rem; }
+  margin-bottom: 1.5rem !important; }
 
 .u-margin-top-big {
-  margin-top: 7rem; }
+  margin-top: 7rem !important; }
 
 .u-margin-top-giant {
-  margin-top: 10rem; }
+  margin-top: 10rem !important; }
 
-.btn:link, .btn:visited {
-  /* Psuedo class - this link is a state of the btn class (also we don't want visited state to change which is why we put this here)*/
+.btn, .btn:link, .btn:visited {
+  /* Pseudo class - this link is a state of the btn class (also we don't want visited state to change which is why we put this here)*/
   text-transform: uppercase;
   text-decoration: none;
   padding: 1.5rem 4rem;
@@ -141,7 +141,9 @@ body {
   /* choose which properties to animate !must be on initial state! */
   position: relative;
   /* we do this for the fixed-psuedo-element */
-  font-size: 1.6rem; }
+  font-size: 1.6rem;
+  border: none;
+  cursor: pointer; }
 
 .btn:hover {
   transform: translateY(-3px);
@@ -154,7 +156,8 @@ body {
     opacity: 0;
     /* trick to fade something out with transition property on initial state */ }
 
-.btn:active {
+.btn:active, .btn:focus {
+  outline: none;
   transform: translateY(-1px);
   /* this is in relation to initial (link) state, not hover state */
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
@@ -503,7 +506,8 @@ body {
   border: none;
   border-bottom: 3px solid transparent;
   width: 90%;
-  display: block; }
+  display: block;
+  transition: all .3s; }
   .form__input:focus {
     outline: none;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
@@ -525,6 +529,45 @@ body {
   opacity: 0;
   visibility: hidden;
   transform: translateY(-4rem); }
+
+.form__radio-group {
+  width: 49%;
+  display: inline-block; }
+
+.form__radio-input {
+  display: none; }
+
+.form__radio-label {
+  font-size: 1.6rem;
+  cursor: pointer;
+  position: relative;
+  padding-left: 4.5rem; }
+
+.form__radio-button {
+  height: 3rem;
+  width: 3rem;
+  border: 5px solid #ec7f37;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: -.4rem; }
+  .form__radio-button::after {
+    content: "";
+    display: block;
+    height: 1.1rem;
+    width: 1.1rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    background-color: #ec7f37;
+    opacity: 0;
+    transition: opacity .2s; }
+
+.form__radio-input:checked ~ .form__radio-label .form__radio-button::after {
+  opacity: 1; }
 
 .row {
   max-width: 114rem;

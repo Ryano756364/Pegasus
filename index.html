@@ -298,6 +298,30 @@
                                     <input type="email" class="form__input" placeholder="Email Address" id="email" required>  <!-- HTML5 checking for valid email address or not with 'email' type -->
                                     <label for="email" class="form__label">Email Address</label>  <!-- connects to input element -->
                                 </div>
+
+                                <div class="form__group">
+                                    <div class="form__radio-group u-margin-bottom-medium">
+                                        <input type="radio" class="form__radio-input" id="asap" name="speed"> <!-- giving name will allow selection for one or the other -->
+                                        <label for="asap" class="form__radio-label">
+                                            <span class="form__radio-button"></span> <!-- This is for style ~ no content -->
+                                            Contact ASAP
+                                        </label>
+                                    </div>
+
+                                    <div class="form__radio-group">
+                                        <input type="radio" class="form__radio-input" id="soon" name="speed">
+                                        <label for="soon" class="form__radio-label">
+                                            <span class="form__radio-button"></span>
+                                            Contact Soon
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form__group">
+                                    <button class="btn btn--orange">  <!-- Need button in form, not anchor link, to submit form-->
+                                        Submit
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>
