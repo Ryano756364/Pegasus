@@ -17,9 +17,12 @@
 #### https://css-tricks.com/snippets/html/glyphs/ (arrows and other symbols)
 #### https://themeui.net/linea-free-outline-iconset/ (icons)
 #### https://www.youtube.com/watch?v=QGVXmoZWZuw (flipping card)
-#### 
-#### 
-#### 
-#### 
+#### https://www.youtube.com/watch?v=eZGHCRENcEk (hover and zoom effect)
+#### https://www.youtube.com/watch?v=zHZRFwWQt2w (background video)
+#### https://coverr.co/ (background video stock)
+#### developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients (photo gradient split)
+#### developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_combinator (sibling selectors - see form input)
+#### https://www.youtube.com/watch?v=7oleJ4NfOVM (radio button trick)
+#### https://unsplash.com/t/business-work (many business photos used for this site)
 #### 
 ---

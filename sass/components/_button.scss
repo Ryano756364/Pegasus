@@ -1,18 +1,23 @@
 .btn {
+  &,  // Use this here to apply to button element as well because 'link' and 'visited' will not work with button, only anchor
   &:link,
   &:visited {
-  /* Psuedo class - this link is a state of the btn class (also we don't want visited state to change which is why we put this here)*/
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  display: inline-block;  /* Do this if we want to give some height, padding, width, ect... to elements */
-  border-radius: 1rem;
-  transition: all .2s;  /* choose which properties to animate !must be on initial state! */
-  position: relative; /* we do this for the fixed-psuedo-element */
-  font-size: $default-font-size;
+    /* Pseudo class - this link is a state of the btn class (also we don't want visited state to change which is why we put this here)*/
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;  /* Do this if we want to give some height, padding, width, ect... to elements */
+    border-radius: 1rem;
+    transition: all .2s;  /* choose which properties to animate !must be on initial state! */
+    position: relative; /* we do this for the fixed-psuedo-element */
+    font-size: $default-font-size;
+
+    // button element
+    border: none;
+    cursor: pointer;
   }
 
-  &:hover{
+  &:hover {
     transform: translateY(-3px);
     box-shadow: 0 1rem 2rem rgba($color-black,.2);  /* x offset, y offset, blur, color(black w/ 20% transparency) */
   
@@ -23,7 +28,9 @@
     }
   }
 
-  &:active{
+  &:active,
+  &:focus{
+    outline: none;
     transform: translateY(-1px);  /* this is in relation to initial (link) state, not hover state */
     box-shadow: 0 .5rem 1rem rgba($color-black,.2);
   }

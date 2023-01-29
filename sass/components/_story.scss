@@ -1,0 +1,80 @@
+.story {
+  /* basic setup */
+  width: 75%;
+  margin: 0 auto; /* ! remember -> block inside block do this */
+  box-shadow: 0 3rem 6rem rgba($color-black, .1);
+  background-color: rgba($color-white, .6);
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: $default-font-size;
+
+  /* skew entire background rectangle of story */
+  transform: skewX(-12deg);
+
+  & > * { /* ! remember -> selects all direct children of .story class */
+    transform: skewX(12deg);
+  }
+
+  &__shape {
+    /* basic setup */
+    width: 15rem;
+    height: 15rem;
+    float: left;
+
+    /* create circle effect for text to float around 'circle' */
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%); /* radius AT horizontally and vertically (center) */
+
+    /* circle */
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(45% at 50% 50%);  /* first percentage will adjust size of circle */
+
+    /* space between circle and text */
+    transform: translateX(-3rem) skewX(12deg);  /* best way to control spacing with floats -> note, will interfere with other skewX if not placed here as well */
+  
+    /* relative for 'caption' below */
+    position: relative;
+  }
+
+  &__img {
+    height: 100%;  /* images always need a width or height to contain size of image */
+    transform: translateX(-2.1rem) scale(1.4);  /* adjusts placement of image to be more centered -> scale sets up for moving effect when hovering*/
+    backface-visibility: hidden;  /* for potential bugs */
+    transition: all .5s; /* smooths out hovering effect */
+  }
+
+  &__text {
+    transform: skewX(12deg);
+  }
+
+  &__caption{
+    /* place text over image -> look to 'shape' since that is parent for relative positioning */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%); /* further down on screen so it can float 'up' when hovered */
+    color: $color-white;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0;
+
+    /* hover effect to slide text in*/
+    transition: all .5s;
+    backface-visibility: hidden; /* fix for potential small glitch when animated */
+  }
+
+  &:hover &__caption{
+    opacity: 1;
+    transform: translate(-50%, -50%); /* pulls back to be level with x and to be centered */
+  }
+
+  &:hover &__img {
+    /* zooms out on hover */
+    transform: translateX(-2.5rem) scale(1);
+
+    /* blur image */
+    filter: blur(3px) brightness(65%);
+  }
+}

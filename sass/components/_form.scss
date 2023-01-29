@@ -1,0 +1,110 @@
+.form {
+
+  &__group:not(:last-child){
+    margin-bottom: 2rem;
+  }
+
+  &__input {
+    /* basic setup */
+    font-size: 1.5rem;
+    font-family: inherit;  // automatically inherits font family (input element is not normally automatic so need this here)
+    color: inherit;
+    padding: 1.5rem 2rem;  // usally want to go for more padding on the sides with input
+    border-radius: 2px;
+    background-color: rgba($color-white, .5);
+    border: none;
+    border-bottom: 3px solid transparent;
+    width: 90%;
+    display: block;  // forces its own line and pushes text below it
+    transition: all .3s;
+
+    &:focus {
+      outline: none;  //removes default blue border, but don't leave it at none due to functionality for those who need to know what box is highlighted
+      box-shadow: 0 1rem 2rem rgba($color-black, .1);
+      
+      // border becomes visibile upon being after
+      border-bottom: 3px solid $color-primary-light;
+    }
+
+    &:focus:invalid {
+      // when we have INVALID, FOCUSED, INPUT element, this will activate
+      border-bottom: 3px solid $color-secondary-medium;
+    }
+
+    &::-webkit-input-placeholder {
+      //psuedo elements are things that are on webpage already
+      color: $color-grey-dark-2;
+    }
+  }
+  
+  &__label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: .7rem;
+    display: block;  // need this otherwise box-model properties won't work
+
+    transition: all .3s;
+  }
+
+  &__input:placeholder-shown + &__label {
+    // '+' is a sibling selector (there is also a '~' general sibling selector if there are more siblings than 1
+    // 'label' must be after 'input' in order to use sibling selector...which it is
+    // when placeholder is shown on input element, we can now style, but we want label to be hidden...not the input
+    opacity: 0;  
+    visibility: hidden;
+    transform: translateY(-4rem);  // moves text down 40 px
+  }
+
+  &__radio-group {
+    width: 49%;
+    display: inline-block;  // no line breaks
+  }
+  &__radio-input {
+    display: none;  // hides default radio button
+  }
+  &__radio-label {
+    font-size: $default-font-size;
+    cursor: pointer;  // gives it link-style cursor
+    position: relative; // needed for absolute positioning below
+    padding-left: 4.5rem;
+  }
+  &__radio-button {
+    height: 3rem;
+    width: 3rem;
+    border: 5px solid $color-primary-light;
+    border-radius: 50%;
+    display: inline-block;  // need block or inline block for properties in this element to work
+    position: absolute;  // need parent relative -> '.radio-label'
+    left: 0;
+    top: -.4rem;
+
+    &::after {
+      // need these two every time for a pseudo element 
+      content: "";  
+      display: block;
+
+      height: 1.1rem;
+      width: 1.1rem;
+      border-radius: 50%;
+
+      // want in center of other circle
+      position: absolute;  // parent is already absolute and that is okay; as long as parent IS specified
+      top: 50%; // these three control the location of the target
+      left: 48%;
+      transform: translate(-50%, -50%);
+
+      // setup for target being controlled with click
+      background-color: $color-primary-light;
+      opacity: 0;
+      transition: opacity .2s;
+    }
+  }
+
+  &__radio-input:checked ~ &__radio-label &__radio-button::after {
+    // what we want to manipulate is not input, but the 'radio-button', but span is not direct child of radio-input
+    // when we hit radio element, it becomes checked -> then select sibling -> then select child
+    // same logic can work for check boxes
+    opacity: 1;
+  }
+}
