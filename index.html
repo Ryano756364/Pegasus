@@ -45,7 +45,7 @@
                     <span class="heading-primary--sub">Websites curated for realtors, loan advisors, and title agencies</span>
                 </h1>
 
-                <a href="#" class="btn btn--white btn--animated">How To Get Your Site</a> <!-- --white and --animated are creating different versions of btn so we use '--' -->
+                <a href="#contactme" class="btn btn--white btn--animated">How To Get Your Site</a> <!-- --white and --animated are creating different versions of btn so we use '--' -->
             </div>
         </header>
     
@@ -116,7 +116,7 @@
                 </div>
             </section>
 
-            <section class="section-pricing">
+            <section class="section-pricing" id="pricing">
                 <div class="u-center-text u-margin-bottom-big">
                     <h2 class="heading-secondary">
                         Competitive Pricing
@@ -151,7 +151,7 @@
                                         <p class="card__price-only">Only</p>
                                         <p class="card__price-value">$25</p>
                                     </div>
-                                    <a href="#" class="btn btn--white">Purchase Now!</a>
+                                    <a href="#contactme" class="btn btn--white">Purchase Now!</a>
                                 </div>
                             </div>
                         </div>
@@ -185,7 +185,7 @@
                                         <p class="card__price-only">Only</p>
                                         <p class="card__price-value">$50</p>
                                     </div>
-                                    <a href="#" class="btn btn--white">Purchase Now!</a>
+                                    <a href="#contactme" class="btn btn--white">Purchase Now!</a>
                                 </div>
                             </div>
                         </div>
@@ -220,7 +220,7 @@
                                         <p class="card__price-only">Only</p>
                                         <p class="card__price-value">$75</p>
                                     </div>
-                                    <a href="#" class="btn btn--white">Purchase Now!</a>
+                                    <a href="#contactme" class="btn btn--white">Purchase Now!</a>
                                 </div>
                             </div>
                         </div>
@@ -228,8 +228,8 @@
                 </div>
 
                 <!-- need a button centered with some margin above it-->
-                <div class="u-center-text u-margin-top-giant">
-                    <a href="#" class="btn btn--orange">Add-on's to every package</a>
+                <div class="u-center-text u-margin-top-giant" id="addons">
+                    <a href="#popup" class="btn btn--orange">Add-on's to every package</a>
                 </div>
             </section>
 
@@ -298,7 +298,7 @@
                 </div>
             </section>
 
-            <section class="section-contactme">
+            <section class="section-contactme" id="contactme">
                 <div class="row">
                     <div class="book">
                         <div class="book__form">
@@ -372,7 +372,24 @@
             </div>
         </footer>
 
-        
+        <div class="popup" id="popup">  <!-- first div is for dark background -->
+            <div class="popup__content">
+                <div class="popup__left">
+                    <img src="/img/statute.jpg" alt="photo-1" class="popup__img">
+                    <img src="/img/contact-photo-1.jpg" alt="photo-2" class="popup__img">
+                </div>
+                
+                <div class="popup__right">
+                    <a href="#pricing" class="popup__close">&times;</a> <!-- new target will make styles dissapear in _popup.scss -->
+                    <h2 class="heading-secondary u-margin-bottom-small">Contact us now!</h2>
+                    <h3 class="heading-tertiary u-margin-bottom-small">Important &ndash; blah blah blah blah</h3>
+                    <p class="popup__text">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum laudantium consequatur, suscipit in hic aliquid incidunt tempore harum magnam id? Praesentium veniam similique consectetur veritatis, eum enim nobis saepe vitae!
+                    </p>
+                    <a href="#" class="button btn--orange">Contact us now!</a>
+                </div>
+            </div>
+        </div>
 
         <!--
         <section class="grid-test">
