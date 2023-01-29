@@ -1,7 +1,29 @@
-@mixin clearfix {  /* appends a psuedo element after element which clears the floats */
+/* Appends a psuedo element after element which clears the floats */
+@mixin clearfix {  
   &::after {
       content: "";
       display: table;
       clear: both;
   }
+}
+
+/* To center divs when needed */
+@mixin absoluteCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Media Queries */
+/*
+  Breakpoints Desktop First (so utilizing max width instead of min width):
+    - 600px (phone)
+    - 900px (tablet portrait)
+    - 1200px (tablet landscape)
+    - 1800px (big desktop)
+*/
+
+@mixin respond-phone {
+  
 }

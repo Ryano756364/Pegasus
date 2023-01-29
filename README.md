@@ -28,9 +28,9 @@
 #### https://easings.net/ (bezier numbers)
 #### cubic-bezier.com (bezier numbers)
 #### https://www.youtube.com/watch?v=OkJYtw1mPeU (css popup box)
-####
-####
-####
+#### https://developer.mozilla.org/en-US/docs/Web/CSS/columns
+#### https://gs.statcounter.com/screen-resolution-stats (not the best way but 'okay' to determine breakpoints -> website breaking on its own is best way)
+#### 
 ####
 ####
 ---

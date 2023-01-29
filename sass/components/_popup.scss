@@ -1,0 +1,88 @@
+.popup{
+  height: 100vh;
+  width: 100%; // may not be needed but just incase
+  position: fixed; //so doesn't move when we scroll
+  top: 0;
+  left: 0;
+  background-color: rgba($color: #000000, $alpha: .8);
+  z-index: 5000;
+
+  //setup for popup feature
+  opacity: 0;  //text and content still here, just not seen
+  visibility: hidden;
+  transition: all .3s;
+
+  //setup for popup feature
+  &:target{
+    //:target pseduo class when URL changes
+    opacity: 1;
+    visibility: visible;
+  }
+  &:target &__content {
+    // popup becomes target so we then style the child content
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  &__close {
+    &:link,
+    &:visited{
+      color: $color-grey-dark;
+      position: absolute;  //popup right isn't fixed -> so will go to popup__content as next parent
+      top: 2.5rem;
+      right: 2.5rem;
+      font-size: 3rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all .2s;
+      line-height: 1;  // need this due to text of 'X' already having a default value
+    }
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__content {
+    @include absoluteCenter;
+    width: 75%;
+    background-color: $color-white;
+    box-shadow: 0 2rem 4rem rgba($color: #000000, $alpha: .2);
+    border-radius: 3px;
+    display: table; // we do this so that the cells below have automatic same height
+    overflow: hidden;  // fixes image overlapping border, allowing us our rounded corners
+  
+    //setup for popup coming at the user
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);  //need this repeated from the absoluteCenter since we can only have 1 tranform at a time
+    transition: all .5s .2s; 
+  }
+
+  &__left {
+    width: 33.33%;
+    display: table-cell;  //if doing this, make sure parent has a 'table' declaration
+  }
+  &__right {
+    width: 66.67%;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 3rem 5rem;
+  }
+  &__img {
+    display: block;  // usally good idea with images
+    width: 100%; //entire parent containers width
+  }
+  &__text {
+    font-size: 1.4rem; 
+    margin-bottom: 4rem;
+
+    // New CSS property to format columns
+    -moz-column-count: 2;
+    -moz-column-gap: 4rem;
+    -moz-column-rule: 1px solid $color-grey-dark-2;
+
+    column-count: 2;
+    column-gap: 4rem;  //1em = 14px because em goes off of current font size of element
+    column-rule: 1px solid $color-grey-dark-2;  //kinda like a border
+  }
+}
