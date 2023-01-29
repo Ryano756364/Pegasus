@@ -1,0 +1,715 @@
+@charset "UTF-8";
+/* COLORS:
+  Dark Grey: #393939 – Dark designs take a little bit more fore-thought but can provide tons of contrast if used well. 
+  Deep Orange: #FF5A09 – With different shades of oranges, there is depth and gradient, without venturing into totally new colors. 
+  Light Orange: #ec7f37 – Utilizing illustrative elements, requires a bit of flexibility for the natural lightness and darkness to contour objects. 
+  Orange Yellow: #be4f0c – Using on color over on the color wheel can keep the palette looking classy, bold, and restrained.
+*/
+/* Grid */
+/* Font Sizes */
+/* based off of 16 px base */
+*,
+*::after,
+*::before {
+  /* Allowing us to start clean*/
+  margin: 0;
+  padding: 0;
+  /* Added so that borders and paddings are not added to total width or height to box*/
+  box-sizing: inherit;
+  /* Tells each element to inherit whatever border box property we set in the body element below (border-box)*/ }
+
+html {
+  font-size: 62.5%;
+  /* Strategy based on system default of 16px to adjust for rem later - global ~ not typography */ }
+
+body {
+  box-sizing: border-box; }
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    /* For browser performance, use opacity and transform */
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(1rem);
+    /* Move in a little farther to create a nice bouncing effect*/ }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    /* For browser performance, use opacity and transform */
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
+
+body {
+  font-family: "Nunito", sans-serif;
+  line-height: 1.7;
+  color: #777;
+  /* Font color */
+  padding: 4rem; }
+
+.heading-primary {
+  /* Not component because it's more related to typography */
+  color: #fff;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  /* Avoids possible background shakiness with animations */
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    /* Remember that '--main' is the MODIFIER */
+    display: block;
+    /* Good here because take up whole width and create new line elements */
+    font-size: 6rem;
+    letter-spacing: 2rem;
+    animation: moveInLeft 1s ease-out; }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    letter-spacing: .5rem;
+    font-weight: lighter;
+    animation: moveInRight 1s ease-out; }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+  /* Cascading effect on the text colors */
+  background-image: linear-gradient(to right, #ec7f37, #ff5b09bc);
+  display: inline-block;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: all .2s;
+  /* Hover effect*/ }
+  .heading-secondary:hover {
+    transform: skewY(1deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 20px rgba(0, 0, 0, 0.2);
+    /* Y, X, Blur, Color */ }
+
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: bolder;
+  text-transform: uppercase; }
+
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 2.5rem; }
+
+.u-center-text {
+  text-align: center !important; }
+
+.u-margin-bottom-big {
+  margin-bottom: 7rem !important; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 3.5rem !important; }
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem !important; }
+
+.u-margin-top-big {
+  margin-top: 7rem !important; }
+
+.u-margin-top-giant {
+  margin-top: 10rem !important; }
+
+.btn, .btn:link, .btn:visited {
+  /* Pseudo class - this link is a state of the btn class (also we don't want visited state to change which is why we put this here)*/
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  /* Do this if we want to give some height, padding, width, ect... to elements */
+  border-radius: 1rem;
+  transition: all .2s;
+  /* choose which properties to animate !must be on initial state! */
+  position: relative;
+  /* we do this for the fixed-psuedo-element */
+  font-size: 1.6rem;
+  border: none;
+  cursor: pointer; }
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  /* x offset, y offset, blur, color(black w/ 20% transparency) */ }
+  .btn:hover::after {
+    /* we want after elements to have properties when the button is on the hover state */
+    transform: scale(1.5);
+    /* simply incrase the element */
+    opacity: 0;
+    /* trick to fade something out with transition property on initial state */ }
+
+.btn:active, .btn:focus {
+  outline: none;
+  transform: translateY(-1px);
+  /* this is in relation to initial (link) state, not hover state */
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+
+.btn--white {
+  background-color: #fff;
+  color: #777; }
+  .btn--white::after {
+    background-color: #fff; }
+
+.btn--orange {
+  background-color: #ff5b09bc;
+  color: #fff; }
+  .btn--orange::after {
+    background-color: #ff5b09bc; }
+
+.btn::after {
+  /* after psuedo element, it's basically a child of parent element */
+  content: "";
+  display: inline-block;
+  /* because button we have is also an inline block */
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  position: absolute;
+  /*put behind button, initially goes by header since header is relative */
+  top: 0;
+  left: 0;
+  z-index: -1;
+  /* defines elements if there are many on top of one another */
+  transition: all .4s;
+  /* Animate only on initial state */ }
+
+.btn--animated {
+  animation: moveInBottom 0.5s ease-out .75s backwards;
+  /* backwards - apply styles BEFORE animation starts */ }
+
+.btn-text:link, .btn-text:visited {
+  color: #393939;
+  display: inline-block;
+  /* do this so we can apply properties like padding, margin, ect... */
+  text-decoration: none;
+  border-bottom: 1px solid #ff5b09bc;
+  padding: 3px;
+  /* okay to use finite units here because they are so small */
+  font-size: 1.6rem;
+  transition: all .2s; }
+
+.btn-text:hover {
+  background-color: #ff5b09bc;
+  color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  /* X Y Blur Color */
+  transform: translateY(-2px);
+  /* ties in with the transition above */ }
+
+.btn-text:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  /* X Y Blur Color */
+  transform: translateY(0);
+  /* ties in with the transition above */ }
+
+.composition {
+  position: relative; }
+  .composition__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+    /* X Y Blue Color, X is almost always 0 for this */
+    border-radius: 2px;
+    position: absolute;
+    /* as soon as this happens, will go to first parent with reference positioning, which we want to be composition (most immediate parent element) */
+    z-index: 10;
+    /* sets us up for hover effect */
+    transition: all .2s;
+    /* ties in with hover and z-index */
+    /*setup for outline border around photo*/
+    outline-offset: 2rem; }
+    .composition__photo--p1 {
+      left: 0;
+      top: -2rem;
+      /* moves image a bit above top text on left grid */ }
+    .composition__photo--p2 {
+      right: 0;
+      top: 2rem;
+      /* moves image a bit above top text on left grid */ }
+    .composition__photo--p3 {
+      left: 20%;
+      top: 10rem;
+      /* moves image a bit above top text on left grid */ }
+    .composition__photo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+      /* bigger shadow + darker to simulate getting closer to the screen */
+      z-index: 20;
+      /* due to parent having z-index of 10, will have higher precedence when hover is activated */
+      transform: scale(1.05) translateY(-0.5rem);
+      /* subtle edge to animation to make it look a bit cooler */
+      /*setup for outline border around photo*/
+      outline: 1.5rem solid #ff5b09bc; }
+  .composition:hover .composition__photo:not(:hover) {
+    /* when we hover composition, then select composition photo that is NOT hovered */
+    transform: scale(0.9);
+    /* shrinks the rest of the photos that are not hovered */ }
+
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  /* shadowing is a big modern design trend */
+  height: 33rem;
+  transition: transform .2s; }
+  .feature-box__icon {
+    font-size: 6rem;
+    margin-bottom: .5rem;
+    display: inline-block;
+    background-image: linear-gradient(to right, #ec7f37, #ff5b09bc);
+    -webkit-background-clip: text;
+    color: transparent; }
+  .feature-box:hover {
+    transform: translateY(-1.5rem) scale(1.03); }
+
+.card {
+  perspective: 150rem;
+  /* property related to hover and giving depth perspective, needs child element (.card__side) */
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 52rem;
+  /* fixes bug where height of &__side collapses with animation */
+  /* rotation of card along y axis */
+  /* font of card */
+  /* Back of card */ }
+  .card__side {
+    height: 52rem;
+    transition: all .5s ease;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 40px rgba(0, 0, 0, 0.15);
+    /* could be variable */
+    /* setup to place back card behind front card */
+    position: absolute;
+    /* remember to always give parent a relative position -> will fit to width by default (text size) */
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    /* hidden will hide backpart of element -> fixes weird bug */
+    /* allows rounded corners to come through image */
+    overflow: hidden; }
+    .card__side--front {
+      background-color: #fff; }
+    .card__side--back {
+      transform: rotateY(180deg);
+      /* sets up back side to already be at 180 degrees */ }
+      .card__side--back-1 {
+        background-image: linear-gradient(to right bottom, #67bde8, #006699); }
+      .card__side--back-2 {
+        background-image: linear-gradient(to right bottom, #13fa49aa, #04691b); }
+      .card__side--back-3 {
+        background-image: linear-gradient(to right bottom, #ec7f37, #ff5b09bc); }
+  .card:hover .card__side--front {
+    /* when we hover over card, we also want side to transform as well */
+    transform: rotateY(-180deg); }
+  .card:hover .card__side--back {
+    transform: rotateY(0);
+    /* since it alreads starts out at 180 degrees -> goes back to 0 */ }
+  .card__picture {
+    /* all image setup */
+    background-size: cover;
+    height: 23rem;
+    background-blend-mode: screen;
+    /* blends color + photo (explore different blend modes) */
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    /* browser compatability goes first */
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    /* cuts photo to style */
+    border-top-left-radius: 3px;
+    /* manual needed here due to polygon making edges sharp */
+    border-top-right-radius: 3px; }
+    .card__picture--1 {
+      background-image: linear-gradient(to right bottom, #67bde8, #006699), url(/img/money-1.jpg); }
+    .card__picture--2 {
+      background-image: linear-gradient(to right bottom, #13fa49aa, #04691b), url(/img/money-2.jpg); }
+    .card__picture--3 {
+      background-image: linear-gradient(to right bottom, #ec7f37, #ff5b09bc), url(/img/money-3.jpg); }
+  .card__heading {
+    /* initial heading setup */
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #fff;
+    /* move text onto image */
+    position: absolute;
+    top: 10rem;
+    right: 2rem;
+    text-align: right;
+    /* compress width to go from full length of element to stack text */
+    width: 80%; }
+  .card__heading-span {
+    padding: 1rem 1.5rem;
+    /* Create stacked text as if they are two separate elements */
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone; }
+    .card__heading-span--1 {
+      background-image: linear-gradient(to right bottom, rgba(103, 189, 232, 0.85), rgba(0, 102, 153, 0.85)); }
+    .card__heading-span--2 {
+      background-image: linear-gradient(to right bottom, rgba(19, 250, 73, 0.85), rgba(4, 105, 27, 0.85)); }
+    .card__heading-span--3 {
+      background-image: linear-gradient(to right bottom, rgba(236, 127, 55, 0.85), rgba(255, 91, 9, 0.85)); }
+  .card__details {
+    padding: 3rem; }
+    .card__details ul {
+      /* Basic setup */
+      list-style: none;
+      width: 80%;
+      margin: 0 auto;
+      /* use this when centering a block inside of a block element */ }
+      .card__details ul li {
+        /* Basic setup */
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem; }
+        .card__details ul li:not(:last-child) {
+          /* border on bottom of every list item except last one */
+          border-bottom: 1px solid #eee; }
+  .card__container {
+    /*center*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*width of elm not parent*/
+    width: 90%;
+    /* override parent width */
+    text-align: center; }
+  .card__price-box {
+    text-align: center;
+    margin-bottom: 8rem;
+    color: #fff; }
+  .card__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase; }
+  .card__price-value {
+    font-size: 6rem;
+    font-weight: lighter; }
+
+.story {
+  /* basic setup */
+  width: 75%;
+  margin: 0 auto;
+  /* ! remember -> block inside block do this */
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: 1.6rem;
+  /* skew entire background rectangle of story */
+  transform: skewX(-12deg); }
+  .story > * {
+    /* ! remember -> selects all direct children of .story class */
+    transform: skewX(12deg); }
+  .story__shape {
+    /* basic setup */
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    /* create circle effect for text to float around 'circle' */
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+    /* radius AT horizontally and vertically (center) */
+    /* circle */
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(45% at 50% 50%);
+    /* first percentage will adjust size of circle */
+    /* space between circle and text */
+    transform: translateX(-3rem) skewX(12deg);
+    /* best way to control spacing with floats -> note, will interfere with other skewX if not placed here as well */
+    /* relative for 'caption' below */
+    position: relative; }
+  .story__img {
+    height: 100%;
+    /* images always need a width or height to contain size of image */
+    transform: translateX(-2.1rem) scale(1.4);
+    /* adjusts placement of image to be more centered -> scale sets up for moving effect when hovering*/
+    backface-visibility: hidden;
+    /* for potential bugs */
+    transition: all .5s;
+    /* smooths out hovering effect */ }
+  .story__text {
+    transform: skewX(12deg); }
+  .story__caption {
+    /* place text over image -> look to 'shape' since that is parent for relative positioning */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    /* further down on screen so it can float 'up' when hovered */
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0;
+    /* hover effect to slide text in*/
+    transition: all .5s;
+    backface-visibility: hidden;
+    /* fix for potential small glitch when animated */ }
+  .story:hover .story__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    /* pulls back to be level with x and to be centered */ }
+  .story:hover .story__img {
+    /* zooms out on hover */
+    transform: translateX(-2.5rem) scale(1);
+    /* blur image */
+    filter: blur(3px) brightness(65%); }
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: .35;
+  /* handles potential overflow bugs */
+  overflow: hidden;
+  /* handle overflow and large size of video */ }
+  .background-video__content {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; }
+
+.form__group:not(:last-child) {
+  margin-bottom: 2rem; }
+
+.form__input {
+  /* basic setup */
+  font-size: 1.5rem;
+  font-family: inherit;
+  color: inherit;
+  padding: 1.5rem 2rem;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-bottom: 3px solid transparent;
+  width: 90%;
+  display: block;
+  transition: all .3s; }
+  .form__input:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #ec7f37; }
+  .form__input:focus:invalid {
+    border-bottom: 3px solid #00a5f6; }
+  .form__input::-webkit-input-placeholder {
+    color: #999; }
+
+.form__label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-left: 2rem;
+  margin-top: .7rem;
+  display: block;
+  transition: all .3s; }
+
+.form__input:placeholder-shown + .form__label {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4rem); }
+
+.form__radio-group {
+  width: 49%;
+  display: inline-block; }
+
+.form__radio-input {
+  display: none; }
+
+.form__radio-label {
+  font-size: 1.6rem;
+  cursor: pointer;
+  position: relative;
+  padding-left: 4.5rem; }
+
+.form__radio-button {
+  height: 3rem;
+  width: 3rem;
+  border: 5px solid #ec7f37;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: -.4rem; }
+  .form__radio-button::after {
+    content: "";
+    display: block;
+    height: 1.1rem;
+    width: 1.1rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    background-color: #ec7f37;
+    opacity: 0;
+    transition: opacity .2s; }
+
+.form__radio-input:checked ~ .form__radio-label .form__radio-button::after {
+  opacity: 1; }
+
+.row {
+  max-width: 114rem;
+  /* Standard nowadays to use 1140px ~ ! max is important ! */
+  margin: 0 auto;
+  /* trick to center block elements inside of another block element */
+  /* appends a psuedo element after element which clears the floats */ }
+  .row:not(:last-child) {
+    /* selects every BUT last child */
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
+
+.header {
+  height: 95vh;
+  /* At every point, this element should be at 95% of the viewport height */
+  background-image: linear-gradient(to right bottom, rgba(57, 57, 57, 0.8), rgba(236, 127, 55, 0.8)), url(../img/mainbackground.jpg);
+  background-size: cover;
+  /* Whatever the width of the viewport, will try to fit element inside of box*/
+  background-position: top;
+  /* As screen changes, top of photo is sticky (center works well too) */
+  position: relative;
+  /* Origin */
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+  /* Specify polygon in which element will still be visibile */ }
+  .header__logo-box {
+    /* '&' same as '.header' */
+    position: absolute;
+    top: 3rem;
+    /* Measurement will start parent element header, so header needs to be relative*/
+    left: 3rem; }
+  .header__logo {
+    height: 10rem;
+    /* Size of logo */ }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    /* used for inline-block */ }
+
+.footer {
+  background-color: #333;
+  padding: 10rem 0;
+  font-size: 1.4rem;
+  color: #f7f7f7; }
+  .footer__logo-box {
+    text-align: center;
+    margin-bottom: 8rem; }
+  .footer__logo {
+    width: 15rem;
+    height: auto; }
+  .footer__navigation {
+    border-top: 2px solid #999;
+    padding-top: 2rem;
+    display: inline-block; }
+  .footer__list {
+    list-style: none; }
+  .footer__item {
+    display: inline-block; }
+    .footer__item:not(:last-child) {
+      margin-right: 1.5rem; }
+  .footer__link:link, .footer__link:visited {
+    color: #f7f7f7;
+    background-color: #333;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: all .2s; }
+  .footer__link:hover, .footer__link:active {
+    color: #ec7f37;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+    transform: rotate(5deg) scale(1.3); }
+  .footer__aboutme {
+    border-top: 2px solid #999;
+    padding-top: 2rem;
+    width: 80%;
+    float: right; }
+
+.section-about {
+  background-color: #f7f7f7;
+  padding: 25rem 0;
+  margin-top: -15vh;
+  /* moves background grey up to fix white gap difference with header polygon */ }
+
+.section-features {
+  padding: 20rem 0;
+  /* make sure to have sites have plenty of padding */
+  background-image: linear-gradient(to right bottom, rgba(57, 57, 57, 0.8), rgba(236, 127, 55, 0.8)), url(/img/handshake-1.jpg);
+  background-size: cover;
+  /* stretches background image nicely across element */
+  margin-top: -12rem;
+  transform: skewY(-7deg);
+  /* creates background diagonal tilt */ }
+  .section-features > * {
+    /* selects everything that is a direct child of ALL of .section-features */
+    transform: skewY(7deg);
+    /* adjusts boxes back to horizontal due to section tild of -7 degrees */ }
+
+.section-pricing {
+  background-color: #f7f7f7;
+  padding: 25rem 0 15rem 0;
+  margin-top: -12rem;
+  /* helps remove break between sections and awkward white space */ }
+
+.section-reviews {
+  /* basic setup */
+  padding: 15rem 0;
+  /* background video control */
+  position: relative; }
+
+.section-contactme {
+  /* basic setup */
+  padding: 15rem 0;
+  background-image: linear-gradient(to right bottom, #ec7f37, #ff5b09bc); }
+
+.book {
+  background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 55%, transparent 65%), url(/img/contact-photo-1.jpg);
+  background-size: 100%;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
+  height: 50rem; }
+  .book__form {
+    width: 50%;
+    padding: 6rem; }
