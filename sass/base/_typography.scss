@@ -2,7 +2,6 @@ body{
   font-family: "Nunito", sans-serif;
   line-height: 1.7;
   color: $color-grey-dark; /* Font color */
-  padding: 4rem;
 }
 
 .heading-primary {  /* Not component because it's more related to typography */
@@ -11,11 +10,17 @@ body{
   backface-visibility: hidden; /* Avoids possible background shakiness with animations */
   margin-bottom: 6rem;
 
+  
   &--main {  /* Remember that '--main' is the MODIFIER */
     display: block; /* Good here because take up whole width and create new line elements */
     font-size: 6rem;
     letter-spacing: 2rem;
     animation: moveInLeft 1s ease-out;
+
+    @include respond(phone){
+      letter-spacing: 1rem;
+      font-size: 5rem;
+    }
   }
 
   &--sub {
@@ -24,6 +29,11 @@ body{
     letter-spacing: .5rem;
     font-weight: lighter;
     animation: moveInRight 1s ease-out;
+
+    @include respond(phone){
+      letter-spacing: .25rem;
+      font-size: 1.75rem;
+    }
   }
 }
 
@@ -40,6 +50,13 @@ body{
   color: transparent;
 
   transition: all .2s;
+
+  @include respond(tab-port){
+    font-size: 3rem;
+  }
+  @include respond(phone){
+    font-size: 2.5rem;
+  }
   /* Hover effect*/
   &:hover {
     transform: skewY(1deg) skewX(15deg) scale(1.1);

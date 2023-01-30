@@ -30,7 +30,8 @@
 #### https://www.youtube.com/watch?v=OkJYtw1mPeU (css popup box)
 #### https://developer.mozilla.org/en-US/docs/Web/CSS/columns
 #### https://gs.statcounter.com/screen-resolution-stats (not the best way but 'okay' to determine breakpoints -> website breaking on its own is best way)
-#### 
-####
-####
+#### developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design (responsive FAQ)
+#### https://blog.logrocket.com/using-em-vs-rem-css/ (em vs rem ~ inconclusive as to a 'better' one for media queries)
+#### sizzy.co (website to see real life device simulations besides using Chrome)
+#### resizepixel.com/ (image resizing)
 ---

@@ -3,11 +3,11 @@
 /* To center divs when needed */
 /* Media Queries */
 /*
-  Breakpoints Desktop First (so utilizing max width instead of min width):
+  Breakpoints Desktop First / Params (so utilizing max width instead of min width):
     - 600px (phone)
-    - 900px (tablet portrait)
-    - 1200px (tablet landscape)
-    - 1800px (big desktop)
+    - 900px (tab-port)
+    - 1200px (tab-land)
+    - 1800px (desktop)
 */
 /* COLORS:
   Dark Grey: #393939 – Dark designs take a little bit more fore-thought but can provide tons of contrast if used well. 
@@ -31,12 +31,25 @@
 html {
   font-size: 62.5%;
   /* Strategy based on system default of 16px to adjust for rem later - global ~ not typography */ }
-  @media (max-width: 600px) {
+  @media (max-width: 112.5em) {
+    html {
+      font-size: 75%; } }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
     html {
       font-size: 50%; } }
+  @media (max-width: 37.5em) {
+    html {
+      font-size: 43.75%; } }
 
 body {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  padding: 4rem; }
+  @media (max-width: 56.25em) {
+    body {
+      padding: 0; } }
 
 @keyframes moveInLeft {
   0% {
@@ -73,8 +86,7 @@ body {
   font-family: "Nunito", sans-serif;
   line-height: 1.7;
   color: #777;
-  /* Font color */
-  padding: 4rem; }
+  /* Font color */ }
 
 .heading-primary {
   /* Not component because it's more related to typography */
@@ -90,12 +102,20 @@ body {
     font-size: 6rem;
     letter-spacing: 2rem;
     animation: moveInLeft 1s ease-out; }
+    @media (max-width: 37.5em) {
+      .heading-primary--main {
+        letter-spacing: 1rem;
+        font-size: 5rem; } }
   .heading-primary--sub {
     display: block;
     font-size: 2rem;
     letter-spacing: .5rem;
     font-weight: lighter;
     animation: moveInRight 1s ease-out; }
+    @media (max-width: 37.5em) {
+      .heading-primary--sub {
+        letter-spacing: .25rem;
+        font-size: 1.75rem; } }
 
 .heading-secondary {
   font-size: 3.5rem;
@@ -109,6 +129,12 @@ body {
   color: transparent;
   transition: all .2s;
   /* Hover effect*/ }
+  @media (max-width: 56.25em) {
+    .heading-secondary {
+      font-size: 3rem; } }
+  @media (max-width: 37.5em) {
+    .heading-secondary {
+      font-size: 2.5rem; } }
   .heading-secondary:hover {
     transform: skewY(1deg) skewX(15deg) scale(1.1);
     text-shadow: 0.5rem 1rem 20px rgba(0, 0, 0, 0.2);
@@ -124,18 +150,27 @@ body {
   .paragraph:not(:last-child) {
     margin-bottom: 2.5rem; }
 
+/* center text */
 .u-center-text {
   text-align: center !important; }
 
+/* margin bottom */
 .u-margin-bottom-big {
   margin-bottom: 7rem !important; }
+  @media (max-width: 56.25em) {
+    .u-margin-bottom-big {
+      margin-bottom: 5rem; } }
 
 .u-margin-bottom-medium {
   margin-bottom: 3.5rem !important; }
+  @media (max-width: 56.25em) {
+    .u-margin-bottom-medium {
+      margin-bottom: 3rem; } }
 
 .u-margin-bottom-small {
   margin-bottom: 1.5rem !important; }
 
+/* margin top */
 .u-margin-top-big {
   margin-top: 7rem !important; }
 
@@ -248,18 +283,39 @@ body {
     /* ties in with hover and z-index */
     /*setup for outline border around photo*/
     outline-offset: 2rem; }
+    @media (max-width: 56.25em) {
+      .composition__photo {
+        float: left;
+        position: relative;
+        width: 33.33%;
+        box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2); } }
     .composition__photo--p1 {
       left: 0;
       top: -2rem;
       /* moves image a bit above top text on left grid */ }
+      @media (max-width: 56.25em) {
+        .composition__photo--p1 {
+          top: 0;
+          transform: scale(1.2); } }
     .composition__photo--p2 {
       right: 0;
       top: 2rem;
       /* moves image a bit above top text on left grid */ }
+      @media (max-width: 56.25em) {
+        .composition__photo--p2 {
+          top: -1.5rem;
+          transform: scale(1.3);
+          /* scale up a bit for creativity */
+          z-index: 100; } }
     .composition__photo--p3 {
       left: 20%;
       top: 10rem;
       /* moves image a bit above top text on left grid */ }
+      @media (max-width: 56.25em) {
+        .composition__photo--p3 {
+          top: 1.5rem;
+          left: 3%;
+          transform: scale(1.2); } }
     .composition__photo:hover {
       transform: scale(1.05);
       box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
@@ -285,6 +341,9 @@ body {
   /* shadowing is a big modern design trend */
   height: 33rem;
   transition: transform .2s; }
+  @media (max-width: 56.25em) {
+    .feature-box {
+      padding: 2rem; } }
   .feature-box__icon {
     font-size: 6rem;
     margin-bottom: .5rem;
@@ -292,6 +351,9 @@ body {
     background-image: linear-gradient(to right, #ec7f37, #ff5b09bc);
     -webkit-background-clip: text;
     color: transparent; }
+    @media (max-width: 56.25em) {
+      .feature-box__icon {
+        margin-bottom: 0rem; } }
   .feature-box:hover {
     transform: translateY(-1.5rem) scale(1.03); }
 
@@ -417,6 +479,44 @@ body {
   .card__price-value {
     font-size: 6rem;
     font-weight: lighter; }
+  @media (max-width: 56.25em) {
+    .card {
+      height: auto;
+      border-radius: 3px;
+      background-color: #fff;
+      box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+      /* Back of card */ }
+      .card__side {
+        height: auto;
+        position: relative;
+        box-shadow: none; }
+        .card__side--back {
+          transform: rotateY(0deg);
+          /* Flips card back around from 180 degrees to 0 */
+          clip-path: polygon(0 15%, 100% 0%, 100% 100%, 0 100%); }
+      .card:hover .card__side--front {
+        transform: rotateY(0deg);
+        /* front should not rotate at all so we set it to 0 */ }
+      .card:hover .card__side--back {
+        transform: rotateY(0);
+        /* stays the same since it should not rotate at all as well */ }
+      .card_details {
+        padding: 1rem 3rem; }
+      .card__container {
+        /*center*/
+        position: relative;
+        /* impactful element to see card data at the front */
+        top: 0%;
+        left: 0%;
+        transform: translate(0);
+        /*width of elm not parent*/
+        width: 100%;
+        /* override parent width */
+        padding: 7rem 4rem 4rem 4rem; }
+      .card__price-box {
+        margin-bottom: 3rem; }
+      .card__price-value {
+        font-size: 4rem; } }
 
 .story {
   /* basic setup */
@@ -431,6 +531,14 @@ body {
   font-size: 1.6rem;
   /* skew entire background rectangle of story */
   transform: skewX(-12deg); }
+  @media (max-width: 56.25em) {
+    .story {
+      width: 100%;
+      padding: 4rem;
+      padding-left: 7rem; } }
+  @media (max-width: 37.5em) {
+    .story {
+      transform: skewX(0); } }
   .story > * {
     /* ! remember -> selects all direct children of .story class */
     transform: skewX(12deg); }
@@ -452,6 +560,9 @@ body {
     /* best way to control spacing with floats -> note, will interfere with other skewX if not placed here as well */
     /* relative for 'caption' below */
     position: relative; }
+    @media (max-width: 37.5em) {
+      .story__shape {
+        transform: translateX(-3rem) skewX(0); } }
   .story__img {
     height: 100%;
     /* images always need a width or height to contain size of image */
@@ -463,6 +574,9 @@ body {
     /* smooths out hovering effect */ }
   .story__text {
     transform: skewX(12deg); }
+    @media (max-width: 37.5em) {
+      .story__text {
+        transform: skewX(0); } }
   .story__caption {
     /* place text over image -> look to 'shape' since that is parent for relative positioning */
     position: absolute;
@@ -521,6 +635,9 @@ body {
   width: 90%;
   display: block;
   transition: all .3s; }
+  @media (max-width: 56.25em) {
+    .form__input {
+      width: 100%; } }
   .form__input:focus {
     outline: none;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
@@ -546,6 +663,10 @@ body {
 .form__radio-group {
   width: 49%;
   display: inline-block; }
+  @media (max-width: 56.25em) {
+    .form__radio-group {
+      width: 100%;
+      margin-bottom: 1rem; } }
 
 .form__radio-input {
   display: none; }
@@ -654,6 +775,13 @@ body {
   .row:not(:last-child) {
     /* selects every BUT last child */
     margin-bottom: 8rem; }
+    @media (max-width: 56.25em) {
+      .row:not(:last-child) {
+        margin-bottom: 6rem; } }
+  @media (max-width: 56.25em) {
+    .row {
+      max-width: 50rem;
+      padding: 0 3rem; } }
   .row::after {
     content: "";
     display: table;
@@ -662,6 +790,13 @@ body {
     float: left; }
     .row [class^="col-"]:not(:last-child) {
       margin-right: 6rem; }
+      @media (max-width: 56.25em) {
+        .row [class^="col-"]:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 6rem; } }
+    @media (max-width: 56.25em) {
+      .row [class^="col-"] {
+        width: 100% !important; } }
   .row .col-1-of-2 {
     width: calc((100% - 6rem) / 2); }
   .row .col-1-of-3 {
@@ -678,7 +813,7 @@ body {
 .header {
   height: 95vh;
   /* At every point, this element should be at 95% of the viewport height */
-  background-image: linear-gradient(to right bottom, rgba(57, 57, 57, 0.8), rgba(236, 127, 55, 0.8)), url(../img/mainbackground.jpg);
+  background-image: linear-gradient(to right bottom, rgba(57, 57, 57, 0.8), rgba(236, 127, 55, 0.8)), url(../img/mainbackground-low-res.jpg);
   background-size: cover;
   /* Whatever the width of the viewport, will try to fit element inside of box*/
   background-position: top;
@@ -688,6 +823,13 @@ body {
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
   /* Specify polygon in which element will still be visibile */ }
+  @media (min-resolution: 192dpi) and (min-width: 600px) {
+    .header {
+      background-image: linear-gradient(to right bottom, rgba(57, 57, 57, 0.8), rgba(236, 127, 55, 0.8)), url(../img/mainbackground.jpg); } }
+  @media (max-width: 37.5em) {
+    .header {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 84vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 84vh, 0 100%); } }
   .header__logo-box {
     /* '&' same as '.header' */
     position: absolute;
@@ -710,9 +852,15 @@ body {
   padding: 10rem 0;
   font-size: 1.4rem;
   color: #f7f7f7; }
+  @media (max-width: 56.25em) {
+    .footer {
+      padding: 8rem 0; } }
   .footer__logo-box {
     text-align: center;
     margin-bottom: 8rem; }
+    @media (max-width: 56.25em) {
+      .footer__logo-box {
+        margin-bottom: 6rem; } }
   .footer__logo {
     width: 15rem;
     height: auto; }
@@ -720,6 +868,10 @@ body {
     border-top: 2px solid #999;
     padding-top: 2rem;
     display: inline-block; }
+    @media (max-width: 56.25em) {
+      .footer__navigation {
+        width: 100%;
+        text-align: center; } }
   .footer__list {
     list-style: none; }
   .footer__item {
@@ -742,6 +894,11 @@ body {
     padding-top: 2rem;
     width: 80%;
     float: right; }
+    @media (max-width: 56.25em) {
+      .footer__aboutme {
+        width: 100%;
+        text-align: center;
+        float: none; } }
 
 .navigation__checkbox {
   display: none; }
@@ -757,6 +914,14 @@ body {
   z-index: 2000;
   text-align: center;
   cursor: pointer; }
+  @media (max-width: 56.25em) {
+    .navigation__button {
+      top: 4rem;
+      right: 4rem; } }
+  @media (max-width: 37.5em) {
+    .navigation__button {
+      top: 3rem;
+      right: 3rem; } }
 
 .navigation__background {
   height: 6rem;
@@ -769,6 +934,14 @@ body {
   z-index: 1000;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+  @media (max-width: 56.25em) {
+    .navigation__background {
+      top: 4.5rem;
+      right: 4.5rem; } }
+  @media (max-width: 37.5em) {
+    .navigation__background {
+      top: 3.5rem;
+      right: 3.5rem; } }
 
 .navigation__nav {
   height: 100vh;
@@ -846,6 +1019,9 @@ body {
   padding: 25rem 0;
   margin-top: -15vh;
   /* moves background grey up to fix white gap difference with header polygon */ }
+  @media (max-width: 56.25em) {
+    .section-about {
+      padding: 20rem 0; } }
 
 .section-features {
   padding: 20rem 0;
@@ -866,24 +1042,45 @@ body {
   padding: 25rem 0 15rem 0;
   margin-top: -12rem;
   /* helps remove break between sections and awkward white space */ }
+  @media (max-width: 56.25em) {
+    .section-pricing {
+      padding: 20rem 0 10rem 0; } }
 
 .section-reviews {
   /* basic setup */
   padding: 15rem 0;
   /* background video control */
   position: relative; }
+  @media (max-width: 56.25em) {
+    .section-reviews {
+      padding: 10rem 0; } }
 
 .section-contactme {
   /* basic setup */
   padding: 15rem 0;
   background-image: linear-gradient(to right bottom, #ec7f37, #ff5b09bc); }
+  @media (max-width: 56.25em) {
+    .section-contactme {
+      padding: 10rem 0; } }
 
 .book {
   background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 55%, transparent 65%), url(/img/contact-photo-1.jpg);
   background-size: 100%;
   border-radius: 3px;
-  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
-  height: 50rem; }
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2); }
+  @media (max-width: 75em) {
+    .book {
+      background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 55%, transparent 65%), url(/img/contact-photo-1.jpg);
+      background-size: cover; } }
+  @media (max-width: 56.25em) {
+    .book {
+      background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 55%, transparent 65%), url(/img/contact-photo-1.jpg); } }
   .book__form {
     width: 50%;
     padding: 6rem; }
+    @media (max-width: 75em) {
+      .book__form {
+        width: 70%; } }
+    @media (max-width: 56.25em) {
+      .book__form {
+        width: 100%; } }
