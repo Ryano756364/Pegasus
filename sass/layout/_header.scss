@@ -4,13 +4,28 @@
     to right bottom,
     rgba($color-primary, 0.8),
     rgba($color-primary-light, 0.8)),
-    url(../img/mainbackground.jpg);
+    url(../img/mainbackground-low-res.jpg);
   background-size: cover; /* Whatever the width of the viewport, will try to fit element inside of box*/
   background-position: top; /* As screen changes, top of photo is sticky (center works well too) */
   position: relative; /* Origin */
  
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%); /* Specify polygon in which element will still be visibile */
+  
+  @media (min-resolution: 192dpi) and (min-width: 600px) { //second condition to account for 2x screens 
+    //This dpi is chosen as default -> apple high res screen reference
+    //When resolution is HIGHER than 192dpi, this image will apply
+    background-image: linear-gradient(
+    to right bottom,
+    rgba($color-primary, 0.8),
+    rgba($color-primary-light, 0.8)),
+    url(../img/mainbackground.jpg);
+  }
+
+  @include respond(phone){
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 84vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 84vh, 0 100%);
+  }
   
   &__logo-box { /* '&' same as '.header' */
     position: absolute;

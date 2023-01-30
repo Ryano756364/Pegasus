@@ -17,6 +17,15 @@
     //hamburger
     text-align: center;
     cursor: pointer;
+
+    @include respond(tab-port){  //adjusts top white button
+      top: 4rem;
+      right: 4rem;
+    }
+    @include respond(phone){  
+      top: 3rem;
+      right: 3rem;
+    }
   }
 
   &__background {
@@ -42,6 +51,15 @@
 
     // 17
     transition: transform .6s cubic-bezier(0.16, 1, 0.3, 1);
+
+    @include respond(tab-port){  //adjusts bottom orange div
+      top: 4.5rem;
+      right: 4.5rem;
+    }
+    @include respond(phone){  
+      top: 3.5rem;
+      right: 3.5rem;
+    }
   }
 
   &__nav {

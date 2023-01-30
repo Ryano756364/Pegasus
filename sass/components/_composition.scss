@@ -11,19 +11,43 @@
     /*setup for outline border around photo*/
     outline-offset: 2rem;
 
+    @include respond(tab-port){
+      float: left;
+      position: relative;
+      width: 33.33%;
+      box-shadow: 0 1.5rem 3rem rgba($color-black, .2);
+    }
+
     &--p1 {
       left: 0;
       top: -2rem;  /* moves image a bit above top text on left grid */
+
+      @include respond(tab-port){
+        top: 0;
+        transform: scale(1.2);
+      }
     }
 
     &--p2 {
       right: 0;
       top: 2rem;  /* moves image a bit above top text on left grid */
+
+      @include respond(tab-port){
+        top: -1.5rem;
+        transform: scale(1.3);  /* scale up a bit for creativity */
+        z-index: 100;
+      }
     }
 
     &--p3 {
       left: 20%;
       top: 10rem;  /* moves image a bit above top text on left grid */
+
+      @include respond(tab-port){
+        top: 1.5rem;  // moves it down a bit
+        left: 3%;
+        transform: scale(1.2);
+      }
     }
 
     &:hover {

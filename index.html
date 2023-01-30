@@ -72,9 +72,29 @@
                     </div>
                     <div class="col-1-of-2">
                         <div class="composition">
+
+                            <!-- This below tells browser best photo based on vp width and dis res -->
+                            <img srcset="img/work-3-low-pix.jpg 1000w, img/work-3.jpg 3000w"
+                                sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
+                                alt="Photo 3"
+                                class="composition__photo composition__photo--p3"
+                                src="img/work-3.jpg"> <!-- add 'src' at end incase of older browser and 'srcset' / 'sizes' doesn't work-->
+                            <img srcset="img/work-2-low-pix.jpg 1000w, img/work-2.jpg 3000w"
+                                sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
+                                alt="Photo 2"
+                                class="composition__photo composition__photo--p2"
+                                src="img/work-2.jpg">
+                            <img srcset="img/work-1-low-pix.jpg 1000w, img/work-1.jpg 3000w"
+                                sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
+                                alt="Photo 1"
+                                class="composition__photo composition__photo--p1"
+                                src="img/work-1.jpg">
+                            
+                            <!--
                             <img src="img/work-3.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
                             <img src="img/work-2.jpg" alt="Photo 2" class="composition__photo composition__photo--p2">
                             <img src="img/work-1.jpg" alt="Photo 3" class="composition__photo composition__photo--p3">
+                            -->
                         </div>
                     </div>
                 </div>
@@ -351,8 +371,9 @@
 
         <footer class="footer">  <!-- with BEM, each element should get it's own class notation -->
             <div class="footer__logo-box">
-                <img src="/img/pegasus-website-favicon-white.png" alt="Footer logo" class="footer__logo">
+                <img srcset="/img/pegasus-website-favicon-white-low-res.png 1x, /img/pegasus-website-favicon-white.png 2x" alt="Footer logo" class="footer__logo">
             </div>
+
             <div class="row">
                 <div class="col-1-of-2">
                     <div class="footer__navigation">
@@ -364,6 +385,7 @@
                         </ul>
                     </div>
                 </div>
+
                 <div class="col-1-of-2">
                     <p class="footer__aboutme">
                         Project executed by <a href="#" class="footer__link">Ryan O'Dell</a> which I can be contacted here on <a href="#" class="footer__link">LinkedIn</a> or on my <a href="#" class="footer__link">GitHub</a>.

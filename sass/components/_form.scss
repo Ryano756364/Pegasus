@@ -18,6 +18,10 @@
     display: block;  // forces its own line and pushes text below it
     transition: all .3s;
 
+    @include respond(tab-port){
+      width: 100%;  // stretches input fields
+    }
+
     &:focus {
       outline: none;  //removes default blue border, but don't leave it at none due to functionality for those who need to know what box is highlighted
       box-shadow: 0 1rem 2rem rgba($color-black, .1);
@@ -59,6 +63,11 @@
   &__radio-group {
     width: 49%;
     display: inline-block;  // no line breaks
+
+    @include respond(tab-port){
+      width: 100%;  // stacks buttons on top of one another
+      margin-bottom: 1rem;
+    }
   }
   &__radio-input {
     display: none;  // hides default radio button

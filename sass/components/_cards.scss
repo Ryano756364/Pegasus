@@ -165,4 +165,54 @@
     font-size: 6rem;
     font-weight: lighter;
   }
+
+
+  @include respond(tab-port){
+    height: auto; 
+    border-radius: 3px; // moved from '&__side' and accommodates for slight grey gap that is created
+    background-color: $color-white;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+
+    &__side{
+      height: auto;
+      position: relative;
+      box-shadow: none;  //allows us to move shadow to entire card; not just 'front' or 'top'
+
+      &--back {
+        transform: rotateY(0deg); /* Flips card back around from 180 degrees to 0 */
+        clip-path: polygon(0 15%, 100% 0%, 100% 100%, 0 100%); // mirrored polygon to top of card
+        
+      }
+    }
+
+    &:hover &__side--front {  
+      transform: rotateY(0deg); /* front should not rotate at all so we set it to 0 */
+    }
+    &:hover &__side--back {  
+      transform: rotateY(0); /* stays the same since it should not rotate at all as well */
+    }
+
+    &_details {
+      padding: 1rem 3rem;
+    }
+
+    /* Back of card */
+    &__container {
+      /*center*/
+      position: relative; /* impactful element to see card data at the front */
+      top: 0%;
+      left: 0%;
+      transform: translate(0); /*width of elm not parent*/
+      width: 100%; /* override parent width */
+      padding: 7rem 4rem 4rem 4rem;
+    }
+
+    &__price-box {
+      margin-bottom: 3rem;
+    }
+
+    &__price-value {
+      font-size: 4rem;
+    }
+  }
 }
