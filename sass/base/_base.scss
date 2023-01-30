@@ -35,3 +35,8 @@ body{
   }
 
 }
+
+::selection {
+  background-color: $color-primary-dark;  //instead of default blue highlight, now it will be orange
+  color: $color-white;  //text will have a white background
+}

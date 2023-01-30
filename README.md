@@ -34,4 +34,5 @@
 #### https://blog.logrocket.com/using-em-vs-rem-css/ (em vs rem ~ inconclusive as to a 'better' one for media queries)
 #### sizzy.co (website to see real life device simulations besides using Chrome)
 #### resizepixel.com/ (image resizing)
+#### www.npmjs.com/package/concat (npm concat)
 ---

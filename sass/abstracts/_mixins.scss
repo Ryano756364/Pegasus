@@ -30,28 +30,28 @@
 
   //600px
   @if $breakpoint == phone {
-    @media (max-width: 37.5em){  //@content allows us to pass a block of code into a mixin
+    @media only screen and (max-width: 37.5em){  //@content allows us to pass a block of code into a mixin
       @content 
     };
   } 
 
   //900px
   @if $breakpoint == tab-port {
-    @media (max-width: 56.25em){  //@content allows us to pass a block of code into a mixin
+    @media only screen and (max-width: 56.25em){  //@content allows us to pass a block of code into a mixin
       @content 
     };
   } 
 
   //1200px
   @if $breakpoint == tab-land {
-    @media (max-width: 75em){  //@content allows us to pass a block of code into a mixin
+    @media only screen and (max-width: 75em){  //@content allows us to pass a block of code into a mixin
       @content 
     };
   } 
 
   //1800px
   @if $breakpoint == desktop {
-    @media (max-width: 112.5em){  //@content allows us to pass a block of code into a mixin
+    @media only screen and (max-width: 112.5em){  //@content allows us to pass a block of code into a mixin
       @content 
     };
   } 

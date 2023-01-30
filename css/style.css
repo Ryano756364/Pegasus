@@ -31,25 +31,29 @@
 html {
   font-size: 62.5%;
   /* Strategy based on system default of 16px to adjust for rem later - global ~ not typography */ }
-  @media (max-width: 112.5em) {
+  @media only screen and (max-width: 112.5em) {
     html {
       font-size: 75%; } }
-  @media (max-width: 75em) {
+  @media only screen and (max-width: 75em) {
     html {
       font-size: 56.25%; } }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     html {
       font-size: 50%; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     html {
       font-size: 43.75%; } }
 
 body {
   box-sizing: border-box;
   padding: 4rem; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     body {
       padding: 0; } }
+
+::selection {
+  background-color: #ff5b09bc;
+  color: #fff; }
 
 @keyframes moveInLeft {
   0% {
@@ -102,7 +106,7 @@ body {
     font-size: 6rem;
     letter-spacing: 2rem;
     animation: moveInLeft 1s ease-out; }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .heading-primary--main {
         letter-spacing: 1rem;
         font-size: 5rem; } }
@@ -112,7 +116,7 @@ body {
     letter-spacing: .5rem;
     font-weight: lighter;
     animation: moveInRight 1s ease-out; }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .heading-primary--sub {
         letter-spacing: .25rem;
         font-size: 1.75rem; } }
@@ -129,10 +133,10 @@ body {
   color: transparent;
   transition: all .2s;
   /* Hover effect*/ }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .heading-secondary {
       font-size: 3rem; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .heading-secondary {
       font-size: 2.5rem; } }
   .heading-secondary:hover {
@@ -157,13 +161,13 @@ body {
 /* margin bottom */
 .u-margin-bottom-big {
   margin-bottom: 7rem !important; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .u-margin-bottom-big {
       margin-bottom: 5rem; } }
 
 .u-margin-bottom-medium {
   margin-bottom: 3.5rem !important; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .u-margin-bottom-medium {
       margin-bottom: 3rem; } }
 
@@ -283,7 +287,7 @@ body {
     /* ties in with hover and z-index */
     /*setup for outline border around photo*/
     outline-offset: 2rem; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .composition__photo {
         float: left;
         position: relative;
@@ -293,7 +297,7 @@ body {
       left: 0;
       top: -2rem;
       /* moves image a bit above top text on left grid */ }
-      @media (max-width: 56.25em) {
+      @media only screen and (max-width: 56.25em) {
         .composition__photo--p1 {
           top: 0;
           transform: scale(1.2); } }
@@ -301,7 +305,7 @@ body {
       right: 0;
       top: 2rem;
       /* moves image a bit above top text on left grid */ }
-      @media (max-width: 56.25em) {
+      @media only screen and (max-width: 56.25em) {
         .composition__photo--p2 {
           top: -1.5rem;
           transform: scale(1.3);
@@ -311,7 +315,7 @@ body {
       left: 20%;
       top: 10rem;
       /* moves image a bit above top text on left grid */ }
-      @media (max-width: 56.25em) {
+      @media only screen and (max-width: 56.25em) {
         .composition__photo--p3 {
           top: 1.5rem;
           left: 3%;
@@ -341,7 +345,7 @@ body {
   /* shadowing is a big modern design trend */
   height: 33rem;
   transition: transform .2s; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .feature-box {
       padding: 2rem; } }
   .feature-box__icon {
@@ -351,7 +355,7 @@ body {
     background-image: linear-gradient(to right, #ec7f37, #ff5b09bc);
     -webkit-background-clip: text;
     color: transparent; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .feature-box__icon {
         margin-bottom: 0rem; } }
   .feature-box:hover {
@@ -479,7 +483,7 @@ body {
   .card__price-value {
     font-size: 6rem;
     font-weight: lighter; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .card {
       height: auto;
       border-radius: 3px;
@@ -531,12 +535,12 @@ body {
   font-size: 1.6rem;
   /* skew entire background rectangle of story */
   transform: skewX(-12deg); }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .story {
       width: 100%;
       padding: 4rem;
       padding-left: 7rem; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .story {
       transform: skewX(0); } }
   .story > * {
@@ -560,7 +564,7 @@ body {
     /* best way to control spacing with floats -> note, will interfere with other skewX if not placed here as well */
     /* relative for 'caption' below */
     position: relative; }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .story__shape {
         transform: translateX(-3rem) skewX(0); } }
   .story__img {
@@ -574,7 +578,7 @@ body {
     /* smooths out hovering effect */ }
   .story__text {
     transform: skewX(12deg); }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .story__text {
         transform: skewX(0); } }
   .story__caption {
@@ -635,7 +639,7 @@ body {
   width: 90%;
   display: block;
   transition: all .3s; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .form__input {
       width: 100%; } }
   .form__input:focus {
@@ -663,7 +667,7 @@ body {
 .form__radio-group {
   width: 49%;
   display: inline-block; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .form__radio-group {
       width: 100%;
       margin-bottom: 1rem; } }
@@ -775,10 +779,10 @@ body {
   .row:not(:last-child) {
     /* selects every BUT last child */
     margin-bottom: 8rem; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .row:not(:last-child) {
         margin-bottom: 6rem; } }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .row {
       max-width: 50rem;
       padding: 0 3rem; } }
@@ -790,11 +794,11 @@ body {
     float: left; }
     .row [class^="col-"]:not(:last-child) {
       margin-right: 6rem; }
-      @media (max-width: 56.25em) {
+      @media only screen and (max-width: 56.25em) {
         .row [class^="col-"]:not(:last-child) {
           margin-right: 0;
           margin-bottom: 6rem; } }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .row [class^="col-"] {
         width: 100% !important; } }
   .row .col-1-of-2 {
@@ -823,10 +827,10 @@ body {
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
   /* Specify polygon in which element will still be visibile */ }
-  @media (min-resolution: 192dpi) and (min-width: 600px) {
+  @media only screen and (min-resolution: 192dpi) and (min-width: 600px) {
     .header {
       background-image: linear-gradient(to right bottom, rgba(57, 57, 57, 0.8), rgba(236, 127, 55, 0.8)), url(../img/mainbackground.jpg); } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .header {
       -webkit-clip-path: polygon(0 0, 100% 0, 100% 84vh, 0 100%);
       clip-path: polygon(0 0, 100% 0, 100% 84vh, 0 100%); } }
@@ -852,13 +856,13 @@ body {
   padding: 10rem 0;
   font-size: 1.4rem;
   color: #f7f7f7; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .footer {
       padding: 8rem 0; } }
   .footer__logo-box {
     text-align: center;
     margin-bottom: 8rem; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .footer__logo-box {
         margin-bottom: 6rem; } }
   .footer__logo {
@@ -868,7 +872,7 @@ body {
     border-top: 2px solid #999;
     padding-top: 2rem;
     display: inline-block; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .footer__navigation {
         width: 100%;
         text-align: center; } }
@@ -894,7 +898,7 @@ body {
     padding-top: 2rem;
     width: 80%;
     float: right; }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .footer__aboutme {
         width: 100%;
         text-align: center;
@@ -914,11 +918,11 @@ body {
   z-index: 2000;
   text-align: center;
   cursor: pointer; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .navigation__button {
       top: 4rem;
       right: 4rem; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .navigation__button {
       top: 3rem;
       right: 3rem; } }
@@ -934,11 +938,11 @@ body {
   z-index: 1000;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .navigation__background {
       top: 4.5rem;
       right: 4.5rem; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .navigation__background {
       top: 3.5rem;
       right: 3.5rem; } }
@@ -1019,7 +1023,7 @@ body {
   padding: 25rem 0;
   margin-top: -15vh;
   /* moves background grey up to fix white gap difference with header polygon */ }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .section-about {
       padding: 20rem 0; } }
 
@@ -1042,7 +1046,7 @@ body {
   padding: 25rem 0 15rem 0;
   margin-top: -12rem;
   /* helps remove break between sections and awkward white space */ }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .section-pricing {
       padding: 20rem 0 10rem 0; } }
 
@@ -1051,7 +1055,7 @@ body {
   padding: 15rem 0;
   /* background video control */
   position: relative; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .section-reviews {
       padding: 10rem 0; } }
 
@@ -1059,7 +1063,7 @@ body {
   /* basic setup */
   padding: 15rem 0;
   background-image: linear-gradient(to right bottom, #ec7f37, #ff5b09bc); }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .section-contactme {
       padding: 10rem 0; } }
 
@@ -1068,19 +1072,19 @@ body {
   background-size: 100%;
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2); }
-  @media (max-width: 75em) {
+  @media only screen and (max-width: 75em) {
     .book {
       background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 55%, transparent 65%), url(/img/contact-photo-1.jpg);
       background-size: cover; } }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .book {
       background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 55%, transparent 65%), url(/img/contact-photo-1.jpg); } }
   .book__form {
     width: 50%;
     padding: 6rem; }
-    @media (max-width: 75em) {
+    @media only screen and (max-width: 75em) {
       .book__form {
         width: 70%; } }
-    @media (max-width: 56.25em) {
+    @media only screen and (max-width: 56.25em) {
       .book__form {
         width: 100%; } }
