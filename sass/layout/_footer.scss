@@ -64,10 +64,13 @@
   }
 
   &__aboutme {
-    border-top: 2px solid $color-grey-dark-2;
     padding-top: 2rem;
     width: 80%;
     float: right;
+
+    &:not(:last-child){
+      border-top: 2px solid $color-grey-dark-2;
+    }
 
     @include respond(tab-port){
       width: 100%;
